@@ -9,7 +9,7 @@ const Hero = () => {
   // Monitor scroll for realistic cloth reveal slide
   useEffect(() => {
     const handleScroll = () => {
-      const threshold = 350; // Reveal completely over first 350px of scroll
+      const threshold = 220; // Fast halfway reveal over 220px of scroll
       const current = window.scrollY;
       const progress = Math.min(current / threshold, 1);
       setScrollProgress(progress);
@@ -22,7 +22,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen overflow-hidden flex flex-col justify-end pb-12 sm:pb-20"
+      className="relative w-full min-h-screen overflow-hidden flex flex-col justify-between pt-36 pb-12 sm:pb-20"
       style={{
         background: '#050505',
         fontFamily: "'Inter', sans-serif",
@@ -51,8 +51,8 @@ const Hero = () => {
       <div
         className="absolute inset-0 z-10 w-full h-full pointer-events-none transition-all duration-200 ease-out"
         style={{
-          transform: `translateY(${-scrollProgress * 135}%)`,
-          opacity: 1 - scrollProgress,
+          transform: `translateY(${-scrollProgress * 55}%)`,
+          opacity: 0.85,
         }}
       >
         {/* Curved vector path simulating organic draping folds of satin/silk fabric */}
@@ -90,8 +90,8 @@ const Hero = () => {
         />
       </div>
 
-      {/* 3. Hero Content (Text & Spacing) */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col justify-end gap-8 select-none mt-20">
+      {/* 3. Hero Content (Sticky Text & Spacing) */}
+      <div className="sticky top-[180px] z-20 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-6 select-none">
         
         {/* Title & Description Column */}
         <div className="max-w-4xl flex flex-col gap-5">
@@ -121,53 +121,52 @@ const Hero = () => {
             Premier property consultancy specializing in elite high-rises and curated luxury penthouses across Mumbai's prestigious avenues.
           </motion.p>
         </div>
+      </div>
 
-        {/* CTA and Stats wrapper */}
-        <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pt-4 border-t border-white/10"
-          style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-          
-          {/* Pill button CTA */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+      {/* 4. Bottom Controls / Stats Section */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pt-4 mt-8 border-t border-white/10 select-none"
+        style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+        
+        {/* Pill button CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <a
+            href="/properties"
+            className="px-8 py-3.5 bg-[#D4AF37] hover:bg-[#c19b2e] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all shadow-[0_0_24px_rgba(212,175,55,0.25)]"
           >
-            <a
-              href="/properties"
-              className="px-8 py-3.5 bg-[#D4AF37] hover:bg-[#c19b2e] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all shadow-[0_0_24px_rgba(212,175,55,0.2)]"
+            Explore Properties
+          </a>
+        </motion.div>
+
+        {/* Floating Glass Stats Row */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="flex flex-wrap gap-4"
+        >
+          {[
+            { num: '9+', label: 'Matunga Projects' },
+            { num: '4+', label: 'Dadar Exclusives' },
+            { num: '12+', label: 'Sion Residences' },
+          ].map(({ num, label }) => (
+            <div
+              key={label}
+              className="px-4 py-2 border rounded-xl flex items-center gap-3 text-xs"
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                borderColor: 'rgba(255, 255, 255, 0.08)',
+                backdropFilter: 'blur(6px)',
+              }}
             >
-              Explore Properties
-            </a>
-          </motion.div>
-
-          {/* Floating Glass Stats Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="flex flex-wrap gap-4"
-          >
-            {[
-              { num: '9+', label: 'Matunga Projects' },
-              { num: '4+', label: 'Dadar Exclusives' },
-              { num: '12+', label: 'Sion Residences' },
-            ].map(({ num, label }) => (
-              <div
-                key={label}
-                className="px-4 py-2 border rounded-xl flex items-center gap-3 text-xs"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  borderColor: 'rgba(255, 255, 255, 0.08)',
-                  backdropFilter: 'blur(6px)',
-                }}
-              >
-                <span className="font-bold text-[#D4AF37]">{num}</span>
-                <span className="text-[#B8B8B8] font-light">{label}</span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
+              <span className="font-bold text-[#D4AF37]">{num}</span>
+              <span className="text-[#B8B8B8] font-light">{label}</span>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       {/* Downward scroll queue */}
