@@ -59,18 +59,18 @@ const AnimatedStat = ({ value, suffix, label }) => {
 const Card = ({ review }) => (
   <motion.div
     className="relative h-full flex flex-col items-center text-center p-6 sm:p-8 rounded-2xl overflow-hidden"
-    style={{ background: 'linear-gradient(145deg, rgba(10,22,40,0.9) 0%, rgba(6,13,26,0.95) 100%)', border: '1px solid rgba(201,168,76,0.15)' }}
-    whileHover={{ y: -6, boxShadow: '0 0 40px rgba(201,168,76,0.22)', borderColor: 'rgba(201,168,76,0.4)' }}
+    style={{ background: 'linear-gradient(145deg, rgba(16,16,16,0.9) 0%, rgba(8,8,8,0.95) 100%)', border: '1px solid rgba(255,255,255,0.08)' }}
+    whileHover={{ y: -6, boxShadow: '0 0 40px rgba(255,255,255,0.06)', borderColor: 'rgba(255,255,255,0.2)' }}
     transition={{ type: 'spring', stiffness: 260, damping: 22 }}
   >
     <div className="absolute top-0 left-0 right-0 h-px"
-      style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent)' }} />
+      style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)' }} />
 
-    <FaQuoteLeft className="mb-4 flex-shrink-0" style={{ fontSize: 'clamp(1.8rem,5vw,2.5rem)', color: 'rgba(201,168,76,0.18)' }} />
+    <FaQuoteLeft className="mb-4 flex-shrink-0" style={{ fontSize: 'clamp(1.8rem,5vw,2.5rem)', color: 'rgba(255,255,255,0.08)' }} />
 
     {/* Avatar */}
     <div className="mb-4 p-0.5 rounded-full flex-shrink-0"
-      style={{ background: 'linear-gradient(135deg, #a07830, #e8c97a, #a07830)', width: 68, height: 68 }}>
+      style={{ background: 'linear-gradient(135deg, #FFFFFF, #D1D5DB, #FFFFFF)', width: 68, height: 68 }}>
       <div className="w-full h-full rounded-full overflow-hidden" style={{ border: '2px solid #020408' }}>
         <img src={review.image} alt={review.name} className="w-full h-full object-cover" loading="lazy" />
       </div>
@@ -87,7 +87,7 @@ const Card = ({ review }) => (
     </p>
 
     <div className="w-12 h-px my-4"
-      style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent)' }} />
+      style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)' }} />
 
     <h4 className="font-heading font-semibold text-luxury-gold" style={{ fontSize: 'clamp(0.85rem,2vw,1rem)' }}>
       {review.name}
@@ -98,10 +98,10 @@ const Card = ({ review }) => (
 
 const Testimonials = () => (
   <section id="testimonials" className="relative py-16 sm:py-20 md:py-28 overflow-hidden"
-    style={{ background: 'linear-gradient(160deg, #020408 0%, #060d1a 50%, #020408 100%)' }}>
+    style={{ background: 'linear-gradient(160deg, #020408 0%, #080808 50%, #020408 100%)' }}>
 
     <div className="absolute pointer-events-none inset-0"
-      style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%)' }} />
+      style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 70%)' }} />
 
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -109,9 +109,9 @@ const Testimonials = () => (
       <motion.div className="text-center mb-10 sm:mb-14"
         initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
         <div className="flex items-center justify-center gap-3 mb-4">
-          <div className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c)' }} />
+          <div className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #FFFFFF)' }} />
           <span className="section-label">What Our Clients Say</span>
-          <div className="h-px w-8" style={{ background: 'linear-gradient(90deg, #c9a84c, transparent)' }} />
+          <div className="h-px w-8" style={{ background: 'linear-gradient(90deg, #FFFFFF, transparent)' }} />
         </div>
         <h2 className="font-heading font-bold text-luxury-white mb-3"
           style={{ fontSize: 'clamp(1.8rem, 6vw, 3.5rem)' }}>
@@ -128,14 +128,14 @@ const Testimonials = () => (
         <div className="glass-panel flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 rounded-full">
           <FaGoogle style={{ color: '#4285F4', fontSize: '14px' }} />
           <div className="flex gap-0.5">
-            {[...Array(5)].map((_,i) => <FaStar key={i} style={{ color: '#c9a84c', fontSize: '11px' }} />)}
+            {[...Array(5)].map((_,i) => <FaStar key={i} style={{ color: '#FFFFFF', fontSize: '11px' }} />)}
           </div>
           <span className="font-heading font-bold text-luxury-white text-sm sm:text-base">4.9
             <span className="text-luxury-muted text-xs font-sans font-normal">/5</span>
           </span>
         </div>
         <span className="text-luxury-muted text-xs sm:text-sm">
-          ✦ Trusted by <span className="text-luxury-gold font-semibold">500+ Families</span> across Mumbai
+          ✦ Trusted by <span className="text-luxury-white font-semibold">500+ Families</span> across Mumbai
         </span>
       </motion.div>
 
