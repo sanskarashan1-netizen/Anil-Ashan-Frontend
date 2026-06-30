@@ -6,6 +6,8 @@ const Hero = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const imgRef = useRef(null);
 
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
   // Monitor scroll for realistic cloth reveal slide
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +19,18 @@ const Hero = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Monitor cursor for 3D parallax background depth
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 18; // Max 18px shift
+      const y = (e.clientY / window.innerHeight - 0.5) * 18;
+      setMousePos({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return (
@@ -35,8 +49,11 @@ const Hero = () => {
           ref={imgRef}
           src="/ghar.png"
           alt="Luxury Architectural Skyscraper"
-          className="w-full h-full object-cover scale-105"
-          style={{ opacity: 0.9 }}
+          className="w-full h-full object-cover transition-transform duration-500 ease-out"
+          style={{ 
+            opacity: 0.9,
+            transform: `translate3d(${mousePos.x}px, ${mousePos.y}px, 0px) scale(1.06)`,
+          }}
         />
         {/* Luxury gradient overlay */}
         <div

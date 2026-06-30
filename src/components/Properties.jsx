@@ -101,6 +101,25 @@ const Properties = () => {
   ];
   const videosList = videos.length > 0 ? videos : defaultVideos;
 
+  const handleMouseMove = (e) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xc = rect.width / 2;
+    const yc = rect.height / 2;
+    const angleX = (yc - y) / 10;
+    const angleY = (x - xc) / 10;
+    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02)`;
+    card.style.transition = 'none';
+  };
+
+  const handleMouseLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+  };
+
   return (
     <section 
       id="properties" 
@@ -130,14 +149,17 @@ const Properties = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-24">
           {featuredProperties.map((p, idx) => (
             <motion.div key={p._id || p.id} custom={idx} variants={cardV} initial="hidden" whileInView="visible" viewport={{ once: true }}
-              whileHover={{ y: -8, borderColor: 'rgba(212,175,55,0.45)' }}
-              className="group rounded-2xl overflow-hidden flex flex-col transition-all duration-500"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              className="group rounded-2xl overflow-hidden flex flex-col pointer-events-auto"
               style={{ 
                 background: 'rgba(255, 255, 255, 0.03)', 
                 border: '1px solid rgba(255, 255, 255, 0.08)',
                 backdropFilter: 'blur(10px)',
+                transformStyle: 'preserve-3d',
+                transition: 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
               }}>
-              <div className="relative h-60 sm:h-72 overflow-hidden flex-shrink-0">
+              <div className="relative h-60 sm:h-72 overflow-hidden flex-shrink-0" style={{ transformStyle: 'preserve-3d' }}>
                 {(p.imageUrl || p.image) ? (
                   <img src={getImgUrl(p.imageUrl || p.image)} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 ) : (
@@ -147,10 +169,10 @@ const Properties = () => {
                 )}
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(5,5,5,0.9) 0%, transparent 60%)' }} />
                 <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-md text-[9px] font-bold uppercase tracking-widest backdrop-blur-md"
-                  style={{ background: 'rgba(16,16,16,0.85)', border: '1px solid rgba(255,255,255,0.1)', color: '#D4AF37' }}>
+                  style={{ background: 'rgba(16,16,16,0.85)', border: '1px solid rgba(255,255,255,0.1)', color: '#D4AF37', transform: 'translateZ(25px)' }}>
                   {p.type}
                 </div>
-                <div className="absolute bottom-4 left-5 right-5">
+                <div className="absolute bottom-4 left-5 right-5" style={{ transform: 'translateZ(35px)' }}>
                   <h3 className="text-[#FFFFFF] font-bold" 
                     style={{ fontSize: 'clamp(1.2rem, 3vw, 1.45rem)', fontFamily: "'Playfair Display', serif" }}>
                     {p.title}
