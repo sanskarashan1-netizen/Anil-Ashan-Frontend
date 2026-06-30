@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaWhatsapp, FaPhoneAlt, FaEnvelope, FaCheckCircle } from 'react-icons/fa';
 
@@ -170,12 +171,18 @@ const Footer = () => {
           </div>
 
           <ul className="flex flex-wrap justify-center gap-4 sm:gap-6">
-            {['Home','About','Properties','Gallery','Testimonials'].map(link => (
-              <li key={link}>
-                <a href={`#${link.toLowerCase()}`} className="text-luxury-muted hover:text-luxury-gold transition-colors duration-300"
+            {[
+              { name: 'Home',         to: '/' },
+              { name: 'About Us',     to: '/about' },
+              { name: 'Properties',   to: '/properties' },
+              { name: 'Gallery',      to: '/gallery' },
+              { name: 'Amenities',    to: '/amenities' },
+            ].map(link => (
+              <li key={link.name}>
+                <Link to={link.to} className="text-luxury-muted hover:text-luxury-gold transition-colors duration-300"
                   style={{ fontSize: '10px', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-                  {link}
-                </a>
+                  {link.name}
+                </Link>
               </li>
             ))}
           </ul>
