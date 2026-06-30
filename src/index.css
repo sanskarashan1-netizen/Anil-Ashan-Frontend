@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-luxury-black text-luxury-white font-sans overflow-x-hidden;
+    background: #020408;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,h2,h3,h4,h5,h6 { @apply font-heading; }
+
+  ::-webkit-scrollbar       { width: 5px; }
+  ::-webkit-scrollbar-track { background: #020408; }
+  ::-webkit-scrollbar-thumb { background: #c9a84c55; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #c9a84c; }
+}
+
+@layer utilities {
+
+  /* ── Glass panels ── */
+  .glass {
+    background: rgba(6,13,26,0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 1.25rem;
+  }
+
+  .glass-panel {
+    background: linear-gradient(145deg, rgba(10,22,40,0.85) 0%, rgba(6,13,26,0.9) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 1.25rem;
+    box-shadow: 0 0 30px rgba(201,168,76,0.06);
+    transition: all 0.4s ease;
+  }
+  .glass-panel:hover {
+    border-color: rgba(201,168,76,0.38);
+    box-shadow: 0 0 50px rgba(201,168,76,0.14);
+  }
+
+  .glass-navbar {
+    background: rgba(2,4,8,0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  /* ── Gold text gradient ── */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #a07830 0%, #e8c97a 40%, #c9a84c 70%, #a07830 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Gold button ── */
+  .btn-gold {
+    background: linear-gradient(135deg, #a07830, #e8c97a, #a07830);
+    background-size: 200% auto;
+    color: #020408;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background-position 0.4s ease, box-shadow 0.4s ease, transform 0.2s ease;
+    border-radius: 4px;
+  }
+  .btn-gold:hover {
+    background-position: right center;
+    box-shadow: 0 0 30px rgba(201,168,76,0.5);
+  }
+
+  /* ── Outline gold button ── */
+  .btn-outline-gold {
+    border: 2px solid #c9a84c;
+    color: #c9a84c;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+  }
+  .btn-outline-gold:hover {
+    background: #c9a84c;
+    color: #020408;
+    box-shadow: 0 0 28px rgba(201,168,76,0.4);
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    font-size: 0.625rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    font-weight: 500;
+  }
+
+  /* ── Gold divider ── */
+  .gold-divider {
+    width: 48px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+    margin: 0 auto;
+  }
+
+  /* ── Hover lift ── */
+  .hover-lift {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.18);
+  }
+
+  /* ── luxury gradient bg ── */
+  .luxury-gradient {
+    background: linear-gradient(160deg, #020408 0%, #060d1a 50%, #020408 100%);
+  }
+}
+
+/* ── Swiper gold dots ── */
+.testimonials-swiper .swiper-pagination-bullet {
+  background: rgba(201,168,76,0.3);
+  opacity: 1;
+  width: 7px; height: 7px;
+  transition: all 0.3s;
+}
+.testimonials-swiper .swiper-pagination-bullet-active {
+  background: #c9a84c;
+  width: 22px;
+  border-radius: 4px;
+}
+
+/* ── Touch friendly ── */
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+/* ── Lenis ── */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+
+/* ── Scroll progress bar ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, #a07830, #e8c97a, #a07830);
+  transform-origin: 0%;
+  z-index: 10000;
+}
+
+/* ── Image smooth load ── */
+img { transition: filter 0.4s ease; }
