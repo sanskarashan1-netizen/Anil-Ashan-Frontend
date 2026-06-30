@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const SionProperty = () => (
   <section className="py-14 sm:py-20 md:py-24 relative"
-    style={{ background: 'linear-gradient(180deg, #060d1a 0%, #020408 100%)', borderBottom: '1px solid rgba(201,168,76,0.1)' }}>
+    style={{ background: 'linear-gradient(180deg, #080808 0%, #020408 100%)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
 
@@ -11,7 +11,7 @@ const SionProperty = () => (
         <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full lg:w-1/2">
           <div className="relative rounded-2xl overflow-hidden"
-            style={{ border: '1.5px solid #c9a84c', boxShadow: '0 0 40px rgba(201,168,76,0.18)', background: '#000', aspectRatio: '16/9' }}>
+            style={{ border: '1.5px solid rgba(255,255,255,0.15)', boxShadow: '0 0 40px rgba(255,255,255,0.05)', background: '#000', aspectRatio: '16/9' }}>
             <video src="/sion-flat-video.mp4" autoPlay controls muted loop playsInline
               className="w-full h-full object-contain block" />
             <div className="absolute top-3 left-3 text-white font-bold px-3 py-1 rounded-full text-[10px] uppercase tracking-widest animate-pulse"
@@ -26,7 +26,7 @@ const SionProperty = () => (
           viewport={{ once: true }} transition={{ duration: 0.8 }} className="w-full lg:w-1/2">
 
           <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#c9a84c)' }} />
+            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#FFFFFF)' }} />
             <span className="section-label">Exclusive Listing</span>
           </div>
 
@@ -44,7 +44,7 @@ const SionProperty = () => (
           <ul className="space-y-2.5 mb-8">
             {[['Location','Prime Area, Sion, Mumbai'],['Status','Available for Immediate Sale'],['Consultant','Anil Ashan']].map(([k,v]) => (
               <li key={k} className="flex items-center gap-3 text-luxury-light" style={{ fontSize: 'clamp(0.8rem,2vw,0.95rem)' }}>
-                <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#c9a84c' }} />
+                <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#FFFFFF' }} />
                 <span className="font-medium text-luxury-white mr-1">{k}:</span>{v}
               </li>
             ))}
