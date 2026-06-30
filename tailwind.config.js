@@ -6,8 +6,8 @@ export default {
       colors: {
         luxury: {
           black:    '#020408',
-          navy:     '#060d1a',
-          darkBlue: '#0a1628',
+          navy:     '#080808', // Monochrome Deep Black
+          darkBlue: '#101010', // Monochrome Dark Gray
           gold:     '#FFFFFF', // Monochrome Absolute White Accent
           goldLight:'#F3F4F6', // Platinum White
           goldDark: '#E5E7EB', // Silver Gray

@@ -18,45 +18,45 @@
 
   ::-webkit-scrollbar       { width: 5px; }
   ::-webkit-scrollbar-track { background: #020408; }
-  ::-webkit-scrollbar-thumb { background: #c9a84c55; border-radius: 99px; }
-  ::-webkit-scrollbar-thumb:hover { background: #c9a84c; }
+  ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.4); }
 }
 
 @layer utilities {
 
   /* ── Glass panels ── */
   .glass {
-    background: rgba(6,13,26,0.75);
+    background: rgba(8, 8, 8, 0.75);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(201,168,76,0.18);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 1.25rem;
   }
 
   .glass-panel {
-    background: linear-gradient(145deg, rgba(10,22,40,0.85) 0%, rgba(6,13,26,0.9) 100%);
+    background: linear-gradient(145deg, rgba(16, 16, 16, 0.85) 0%, rgba(8, 8, 8, 0.9) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(201,168,76,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 1.25rem;
-    box-shadow: 0 0 30px rgba(201,168,76,0.06);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.02);
     transition: all 0.4s ease;
   }
   .glass-panel:hover {
-    border-color: rgba(201,168,76,0.38);
-    box-shadow: 0 0 50px rgba(201,168,76,0.14);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.06);
   }
 
   .glass-navbar {
-    background: rgba(2,4,8,0.82);
+    background: rgba(2, 4, 8, 0.82);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   /* ── Gold text gradient ── */
   .text-gradient-gold {
-    background: linear-gradient(135deg, #a07830 0%, #e8c97a 40%, #c9a84c 70%, #a07830 100%);
+    background: linear-gradient(135deg, #FFFFFF 0%, #E5E7EB 40%, #9CA3AF 70%, #FFFFFF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -64,7 +64,7 @@
 
   /* ── Gold button ── */
   .btn-gold {
-    background: linear-gradient(135deg, #a07830, #e8c97a, #a07830);
+    background: linear-gradient(135deg, #E5E7EB, #FFFFFF, #E5E7EB);
     background-size: 200% auto;
     color: #020408;
     font-weight: 700;

@@ -55,7 +55,7 @@ const SoldFlats = () => {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="w-full md:w-1/2 bg-[#0a1118] border border-luxury-gold/30 rounded-xl p-8 flex flex-col justify-center shadow-lg relative overflow-hidden"
+            className="w-full md:w-1/2 bg-[#0D0E12] border border-luxury-gold/30 rounded-xl p-8 flex flex-col justify-center shadow-lg relative overflow-hidden"
           >
             {/* Detail Badges */}
             <div className="space-y-4 mb-8">
