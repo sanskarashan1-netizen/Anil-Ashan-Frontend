@@ -7,19 +7,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Card = ({ src, h = '220px' }) => (
   <div className="g-card" style={{
-    position: 'relative', overflow: 'hidden', borderRadius: 14,
-    border: '1px solid rgba(201,168,76,0.15)', opacity: 0,
-    height: h, background: '#060d1a',
+    position: 'relative', overflow: 'hidden', borderRadius: 16,
+    border: '1px solid rgba(255,255,255,0.08)', opacity: 0,
+    height: h, background: '#101010',
   }}>
-    <img src={src} alt=""
-      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
-      onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+    <img src={src} alt="Architecture Visit"
+      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.7s cubic-bezier(0.25, 1, 0.5, 1)' }}
+      onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
       onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
     />
     <div style={{
-      position: 'absolute', inset: 0, opacity: 0, transition: 'opacity 0.4s',
-      background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 55%)',
-      borderRadius: 14,
+      position: 'absolute', inset: 0, opacity: 0, transition: 'opacity 0.4s ease',
+      background: 'linear-gradient(to top, rgba(5,5,5,0.6) 0%, transparent 60%)',
+      borderRadius: 16,
     }}
       onMouseEnter={e => e.currentTarget.style.opacity = 1}
       onMouseLeave={e => e.currentTarget.style.opacity = 0}
@@ -78,90 +78,98 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    // Heading
+    // Heading GSAP animation
     if (headRef.current?.children) {
       gsap.fromTo(headRef.current.children,
-        { opacity: 0, y: 28 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out',
           scrollTrigger: { trigger: headRef.current, start: 'top 88%', once: true } }
       );
     }
-    // Cards
+    // Cards GSAP animation
     const cards = sectionRef.current?.querySelectorAll('.g-card');
     if (cards?.length) {
       gsap.fromTo(cards,
-        { opacity: 0, y: 30, filter: 'blur(4px)' },
-        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.6, stagger: 0.07, ease: 'power3.out',
+        { opacity: 0, y: 25, filter: 'blur(4px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.6, stagger: 0.05, ease: 'power3.out',
           scrollTrigger: { trigger: sectionRef.current, start: 'top 78%', once: true } }
       );
     }
     // Showcase parallax
     const bgImg = showcaseRef.current?.querySelector('img');
     if (bgImg) {
-      gsap.to(bgImg, { yPercent: 10, ease: 'none',
+      gsap.to(bgImg, { yPercent: 8, ease: 'none',
         scrollTrigger: { trigger: showcaseRef.current, start: 'top bottom', end: 'bottom top', scrub: true } });
     }
   }, []);
 
   return (
-    <section id="gallery" ref={sectionRef}
-      style={{ background: 'linear-gradient(180deg,#060d1a 0%,#020408 55%,#060d1a 100%)', padding: 'clamp(3rem,6vw,5.5rem) 0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(1rem,3vw,2rem)' }}>
+    <section 
+      id="gallery" 
+      ref={sectionRef}
+      className="py-20 md:py-32 select-none"
+      style={{ background: '#050505', fontFamily: "'Inter', sans-serif" }}
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
 
-        {/* ── Header ── */}
-        <div ref={headRef} style={{ textAlign: 'center', marginBottom: 'clamp(2rem,4vw,3.5rem)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 14 }}>
-            <div style={{ height: 1, width: 36, background: 'linear-gradient(90deg,transparent,#c9a84c)' }} />
-            <span style={{ color: '#c9a84c', fontSize: 10, letterSpacing: '0.38em', textTransform: 'uppercase', fontWeight: 500, fontFamily: 'Inter,sans-serif' }}>Property Visits</span>
-            <div style={{ height: 1, width: 36, background: 'linear-gradient(90deg,#c9a84c,transparent)' }} />
+        {/* Header */}
+        <div ref={headRef} className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
+            <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">Cinematic Showcase</span>
+            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#D4AF37,transparent)' }} />
           </div>
-          <h2 style={{ fontFamily: 'Playfair Display,serif', fontWeight: 700, color: '#f5f0e8', fontSize: 'clamp(1.8rem,5.5vw,3.5rem)', lineHeight: 1.1, marginBottom: 12 }}>
-            Recent{' '}
-            <span style={{ background: 'linear-gradient(135deg,#a07830,#e8c97a,#c9a84c)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Property Visits
-            </span>
+          <h2 className="text-[#FFFFFF] mb-4 tracking-tight" 
+            style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontFamily: "'Playfair Display', serif" }}>
+            Recent Property Visits
           </h2>
-          <p style={{ color: '#8a8070', fontWeight: 300, fontSize: 'clamp(0.85rem,1.8vw,1rem)', maxWidth: 460, margin: '0 auto', lineHeight: 1.7, fontFamily: 'Inter,sans-serif' }}>
-            A glimpse into the extraordinary lifestyle awaiting you in our prime properties.
+          <p className="text-[#B8B8B8] max-w-xl mx-auto text-sm font-light leading-relaxed">
+            A visual documentation of the premium craftsmanship and architectural landmarks in our exclusive portfolio.
           </p>
         </div>
 
-        {/* ── Full-width cinematic banner ── */}
-        <div ref={showcaseRef} className="g-card"
-          style={{ position: 'relative', height: 'clamp(180px,28vw,400px)', borderRadius: 18, overflow: 'hidden', marginBottom: 12, border: '1px solid rgba(201,168,76,0.18)', opacity: 0 }}>
-          <img src={resolveUrl(galleryData.showcaseImg || '/8.png')} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top,rgba(2,4,8,0.82) 0%,rgba(2,4,8,0.2) 55%,transparent 100%)' }} />
+        {/* Showcase Banner */}
+        <div ref={showcaseRef} className="g-card relative overflow-hidden rounded-2xl mb-6 shadow-2xl border"
+          style={{ 
+            height: 'clamp(220px, 30vw, 420px)', 
+            borderColor: 'rgba(255,255,255,0.08)', 
+            opacity: 0,
+            background: '#101010'
+          }}>
+          <img src={resolveUrl(galleryData.showcaseImg || '/8.png')} alt="Luxury Villa Visited" className="w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.3) 60%, transparent 100%)' }} />
           <motion.div
-            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.9 }}
-            style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 'clamp(1rem,3vw,2rem)', textAlign: 'center' }}>
-            <p style={{ color: '#c9a84c', fontSize: 9, letterSpacing: '0.42em', textTransform: 'uppercase', marginBottom: 8, fontFamily: 'Inter,sans-serif', fontWeight: 500 }}>
+            initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.8 }}
+            className="absolute bottom-0 inset-x-0 p-6 sm:p-10 text-center">
+            <p className="text-[#D4AF37] text-[10px] uppercase tracking-[0.3em] font-semibold mb-2">
               Experience Premium Living
             </p>
-            <h3 style={{ fontFamily: 'Playfair Display,serif', fontWeight: 700, color: '#f5f0e8', fontSize: 'clamp(1.1rem,3.5vw,2.4rem)', lineHeight: 1.2, margin: 0 }}>
+            <h3 className="text-[#FFFFFF] tracking-tight text-xl sm:text-2xl md:text-3xl font-bold" 
+              style={{ fontFamily: "'Playfair Display', serif" }}>
               Matunga Luxury Residences
             </h3>
           </motion.div>
         </div>
 
-        {/* ── Row 1: 2 equal large ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
-          <Card src={getImg(0, '/1.png')} h="clamp(180px,32vw,420px)" />
-          <Card src={getImg(1, '/111.png')} h="clamp(180px,32vw,420px)" />
+        {/* Row 1: 2 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <Card src={getImg(0, '/1.png')} h="clamp(200px, 32vw, 420px)" />
+          <Card src={getImg(1, '/111.png')} h="clamp(200px, 32vw, 420px)" />
         </div>
 
-        {/* ── Row 2: 3 equal medium ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 12 }}>
-          <Card src={getImg(2, '/13.png')} h="clamp(120px,20vw,240px)" />
-          <Card src={getImg(3, '/15.png')} h="clamp(120px,20vw,240px)" />
-          <Card src={getImg(4, '/17.png')} h="clamp(120px,20vw,240px)" />
+        {/* Row 2: 3 Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
+          <Card src={getImg(2, '/13.png')} h="clamp(160px, 20vw, 240px)" />
+          <Card src={getImg(3, '/15.png')} h="clamp(160px, 20vw, 240px)" />
+          <Card src={getImg(4, '/17.png')} h="clamp(160px, 20vw, 240px)" />
         </div>
 
-        {/* ── Row 3: 3 equal small ── */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12 }}>
-          <Card src={getImg(5, '/10.png')} h="clamp(100px,16vw,200px)" />
-          <Card src={getImg(6, '/11.png')} h="clamp(100px,16vw,200px)" />
-          <Card src={getImg(7, '/12.png')} h="clamp(100px,16vw,200px)" />
+        {/* Row 3: 3 Columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <Card src={getImg(5, '/10.png')} h="clamp(120px, 16vw, 200px)" />
+          <Card src={getImg(6, '/11.png')} h="clamp(120px, 16vw, 200px)" />
+          <Card src={getImg(7, '/12.png')} h="clamp(120px, 16vw, 200px)" />
         </div>
 
       </div>

@@ -22,38 +22,37 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed w-full z-50 transition-all duration-500"
-      style={{
-        background: scrolled ? 'rgba(2,4,8,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(201,168,76,0.15)' : 'none',
-        padding: scrolled ? '12px 0' : '20px 0',
-      }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-
+    <header className="fixed w-full z-50 px-6 md:px-12 lg:px-16 pt-6 select-none pointer-events-none">
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="w-full max-w-7xl mx-auto rounded-xl border border-white/10 px-6 py-3.5 flex items-center justify-between pointer-events-auto transition-all duration-300"
+        style={{
+          background: scrolled ? 'rgba(16, 16, 16, 0.75)' : 'rgba(16, 16, 16, 0.45)',
+          backdropFilter: 'blur(8px)',
+          borderColor: 'rgba(255, 255, 255, 0.08)',
+          boxShadow: scrolled ? '0 8px 32px 0 rgba(0, 0, 0, 0.5)' : 'none',
+        }}
+      >
         {/* Logo */}
-        <Link to="/" className="flex flex-col leading-none">
-          <span className="font-heading font-bold text-luxury-white tracking-wide"
-            style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)' }}>
+        <Link to="/" className="flex flex-col leading-none text-[#FFFFFF] hover:text-[#D4AF37] transition-colors duration-300">
+          <span className="text-xl md:text-2xl font-bold tracking-tight"
+            style={{ fontFamily: "'Playfair Display', serif" }}>
             ANIL ASHAN
           </span>
-          <span className="font-sans font-normal tracking-[0.25em] text-luxury-muted"
-            style={{ fontSize: '9px', textTransform: 'uppercase' }}>
+          <span className="font-sans font-light tracking-[0.25em] text-[#B8B8B8]"
+            style={{ fontSize: '8px', textTransform: 'uppercase', fontFamily: "'Inter', sans-serif" }}>
             Real Estate
           </span>
         </Link>
 
         {/* Desktop links — center */}
-        <div className="hidden md:flex items-center gap-7">
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map(link => (
             <Link key={link.to} to={link.to}
-              className="font-sans font-medium transition-colors duration-300 hover:text-luxury-gold"
-              style={{ fontSize: '13px', letterSpacing: '0.04em', color: '#d4cfc6' }}>
+              className="font-sans text-xs font-semibold tracking-widest text-[#B8B8B8] hover:text-[#D4AF37] transition-colors duration-300 uppercase"
+              style={{ fontFamily: "'Inter', sans-serif" }}>
               {link.name}
             </Link>
           ))}
@@ -62,49 +61,55 @@ const Navbar = () => {
         {/* Contact Us button — right */}
         <div className="hidden md:block">
           <a href="#contact"
-            className="btn-gold px-5 py-2.5 rounded-full text-xs font-bold">
+            className="px-6 py-3 border border-[#D4AF37]/40 hover:border-[#D4AF37] bg-transparent hover:bg-[#D4AF37] text-[#FFFFFF] hover:text-[#050505] text-[10px] font-bold uppercase tracking-[0.15em] rounded-full transition-all duration-300"
+            style={{ fontFamily: "'Inter', sans-serif" }}>
             Contact Us
           </a>
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setOpen(true)} className="md:hidden text-luxury-white text-2xl p-1">
+        <button onClick={() => setOpen(true)} className="md:hidden text-[#FFFFFF] hover:text-[#D4AF37] text-2xl p-1 transition-colors">
           <HiMenuAlt3 />
         </button>
-      </div>
+      </motion.nav>
 
       {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[999] flex flex-col justify-center items-center"
-            style={{ background: '#020408' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[999] flex flex-col justify-center items-center pointer-events-auto"
+            style={{ 
+              background: 'rgba(5, 5, 5, 0.96)',
+              backdropFilter: 'blur(12px)'
+            }}
           >
-            <button onClick={() => setOpen(false)} className="absolute top-5 right-5 text-luxury-gold text-3xl p-1">
+            <button onClick={() => setOpen(false)} className="absolute top-6 right-6 text-[#D4AF37] text-3xl p-1 hover:scale-110 transition-transform">
               <HiX />
             </button>
-            <div className="absolute top-5 left-5">
-              <span className="font-heading font-bold text-luxury-white text-xl tracking-wide">ANIL ASHAN</span>
-            </div>
             <div className="flex flex-col gap-8 text-center">
               {[...navLinks, { name: 'Contact', to: '#contact' }].map((link, idx) => (
                 <motion.div
                   key={link.to}
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.06 }}
-                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 }}
                 >
                   {link.to.startsWith('#') ? (
                     <a href={link.to}
-                      className="text-2xl font-heading font-bold uppercase tracking-widest text-luxury-light hover:text-luxury-gold transition-colors">
+                      onClick={() => setOpen(false)}
+                      className="text-2xl font-bold uppercase tracking-widest text-[#FFFFFF] hover:text-[#D4AF37] transition-colors duration-300"
+                      style={{ fontFamily: "'Playfair Display', serif" }}>
                       {link.name}
                     </a>
                   ) : (
                     <Link to={link.to}
-                      className="text-2xl font-heading font-bold uppercase tracking-widest text-luxury-light hover:text-luxury-gold transition-colors">
+                      onClick={() => setOpen(false)}
+                      className="text-2xl font-bold uppercase tracking-widest text-[#FFFFFF] hover:text-[#D4AF37] transition-colors duration-300"
+                      style={{ fontFamily: "'Playfair Display', serif" }}>
                       {link.name}
                     </Link>
                   )}
@@ -114,7 +119,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </header>
   );
 };
 

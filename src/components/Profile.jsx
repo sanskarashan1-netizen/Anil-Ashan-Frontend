@@ -23,81 +23,100 @@ const stats = [
 ];
 
 const Profile = () => (
-  <section id="about" className="py-14 sm:py-20 md:py-24 relative"
-    style={{ background: 'linear-gradient(160deg, #020408 0%, #060d1a 100%)' }}>
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section 
+    id="about" 
+    className="py-20 md:py-32 relative select-none"
+    style={{ background: '#050505', fontFamily: "'Inter', sans-serif" }}
+  >
+    <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+      
+      {/* Editorial Split Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-      <div className="glass-panel p-6 sm:p-10 md:p-14 flex flex-col md:flex-row items-center gap-10 md:gap-14">
-
-        {/* Images grid */}
+        {/* Column 1: Left content (Lg size: 6/12 cols) */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.8 }}
-          className="w-full md:w-1/2 grid grid-cols-2 gap-3 relative flex-shrink-0">
-
-          <div className="space-y-3">
-            <div className="relative rounded-2xl overflow-hidden" style={{ height: 'clamp(150px,32vw,280px)', border: '1px solid rgba(201,168,76,0.3)' }}>
-              <img src="/image.png" alt="Anil Ashan" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
-            </div>
-            <div className="relative rounded-2xl overflow-hidden" style={{ height: 'clamp(130px,28vw,220px)', border: '1px solid rgba(201,168,76,0.18)' }}>
-              <img src="/about-img-2.jpeg" alt="Work" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-6 flex flex-col gap-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
+            <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">About Our Consultant</span>
           </div>
 
-          <div className="space-y-3">
-            <div className="relative rounded-2xl overflow-hidden" style={{ height: 'clamp(130px,28vw,220px)', border: '1px solid rgba(201,168,76,0.18)' }}>
-              <img src="/about-img-1.jpeg" alt="Office" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
-            <div className="relative rounded-2xl overflow-hidden" style={{ height: 'clamp(150px,32vw,280px)', border: '1px solid rgba(201,168,76,0.3)' }}>
-              <img src="/about-img-3.jpeg" alt="Property" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
-          </div>
-
-          {/* Center badge */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full flex flex-col items-center justify-center z-10"
-            style={{ width: 'clamp(52px,10vw,88px)', height: 'clamp(52px,10vw,88px)', background: '#020408', border: '2px solid #c9a84c', boxShadow: '0 0 20px rgba(201,168,76,0.3)' }}>
-            <span className="text-luxury-gold font-heading font-bold uppercase tracking-widest" style={{ fontSize: 'clamp(7px,1.5vw,11px)' }}>Est.</span>
-            <span className="text-luxury-white font-bold" style={{ fontSize: 'clamp(9px,2vw,14px)' }}>2015</span>
-          </div>
-        </motion.div>
-
-        {/* Content */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.8 }}
-          className="w-full md:w-1/2">
-
-          <div className="flex items-center gap-3 mb-5">
-            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #c9a84c)' }} />
-            <span className="section-label">Premium Consultant</span>
-          </div>
-
-          <h2 className="font-heading font-bold text-luxury-white leading-tight mb-4"
-            style={{ fontSize: 'clamp(1.5rem, 4.5vw, 2.8rem)' }}>
-            Helping Families Find Their{' '}
-            <span className="text-gradient-gold">Dream Home Since 2015</span>
+          <h2 className="text-[#FFFFFF] leading-[1.1] tracking-tight"
+            style={{ fontSize: 'clamp(1.8rem, 4.5vw, 3.2rem)', fontFamily: "'Playfair Display', serif" }}>
+            Decade of Excellence in{' '}
+            <span className="text-[#D4AF37]">Premium Estates</span>
           </h2>
 
-          <p className="text-luxury-light font-light leading-relaxed mb-8"
-            style={{ fontSize: 'clamp(0.85rem, 2vw, 1.05rem)', opacity: 0.85 }}>
-            Anil Ashan is a premier luxury real estate consultant specializing in{' '}
-            <span className="font-semibold text-luxury-white">buying, selling, and renting</span> residential & commercial properties across Mumbai's elite neighbourhoods.
+          <p className="text-[#B8B8B8] font-light leading-relaxed text-sm md:text-base">
+            Anil Ashan is a premier luxury real estate consultant specializing in acquiring, selling, and leasing high-end residential & commercial spaces across Mumbai’s most sought-after avenues.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+          <p className="text-[#B8B8B8] font-light leading-relaxed text-sm">
+            Known for unmatched legal vetting, transparent negotiations, and a private client network, we secure transactions that align with both aesthetic requirements and long-term asset growth.
+          </p>
+
+          {/* Luxury stats row */}
+          <div className="grid grid-cols-2 gap-6 pt-6 border-t border-white/10" style={{ borderColor: 'rgba(255, 255, 255, 0.08)' }}>
             {stats.map(({ to, suffix, prefix = '', label }) => (
-              <div key={label} className="pl-3 sm:pl-4"
-                style={{ borderLeft: '2px solid #c9a84c' }}>
-                <div className="font-heading font-bold text-luxury-white"
-                  style={{ fontSize: 'clamp(1.3rem, 4vw, 2rem)' }}>
+              <div key={label} className="pl-4" style={{ borderLeft: '2px solid #D4AF37' }}>
+                <div className="text-[#FFFFFF] font-bold"
+                  style={{ fontSize: 'clamp(1.4rem, 4vw, 2.1rem)', fontFamily: "'Playfair Display', serif" }}>
                   <AnimatedCounter from={0} to={to} duration={2} prefix={prefix} suffix={suffix} />
                 </div>
-                <div className="text-luxury-muted uppercase tracking-wider mt-0.5"
-                  style={{ fontSize: 'clamp(9px, 1.8vw, 12px)' }}>
+                <div className="text-[#B8B8B8] uppercase tracking-widest mt-1 text-[9px] font-semibold">
                   {label}
                 </div>
               </div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Column 2: Right Image Collage (Lg size: 6/12 cols) */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-6 grid grid-cols-2 gap-4 relative"
+        >
+          <div className="space-y-4">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl" 
+              style={{ height: 'clamp(180px, 30vw, 320px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+              <img src="/image.png" alt="Anil Ashan" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
+            </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl" 
+              style={{ height: 'clamp(140px, 24vw, 240px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+              <img src="/about-img-2.jpeg" alt="Consultation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+          </div>
+
+          <div className="space-y-4 pt-8">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl" 
+              style={{ height: 'clamp(140px, 24vw, 240px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+              <img src="/about-img-1.jpeg" alt="Luxury Architecture" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl" 
+              style={{ height: 'clamp(180px, 30vw, 320px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+              <img src="/about-img-3.jpeg" alt="Modern Penthouse" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            </div>
+          </div>
+
+          {/* Floating Luxury Est. Badge */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full flex flex-col items-center justify-center z-10"
+            style={{ 
+              width: 'clamp(64px, 12vw, 92px)', 
+              height: 'clamp(64px, 12vw, 92px)', 
+              background: '#050505', 
+              border: '1px solid #D4AF37', 
+              boxShadow: '0 0 32px rgba(212,175,55,0.2)' 
+            }}>
+            <span className="text-[#D4AF37] font-semibold uppercase tracking-widest text-[8px]">Est.</span>
+            <span className="text-[#FFFFFF] font-bold text-xs">2015</span>
           </div>
         </motion.div>
 
