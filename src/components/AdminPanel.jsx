@@ -278,6 +278,24 @@ export default function AdminPanel() {
         } else {
           alert('Image upload failed, using fallback or empty image');
         }
+      } else if (listingImage && listingImage.startsWith('http') && !listingImage.includes('cloudinary.com')) {
+        // Upload pasted external image link to Cloudinary on submit
+        try {
+          const uploadRes = await fetch(`${API_URL}/upload`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${localStorage.getItem('admin_token')}`
+            },
+            body: JSON.stringify({ imageUrl: listingImage })
+          });
+          if (uploadRes.ok) {
+            const uploadData = await uploadRes.json();
+            finalImageUrl = uploadData.imageUrl;
+          }
+        } catch (err) {
+          console.error("Error uploading pasted listing image link:", err);
+        }
       }
 
       const payload = {
@@ -600,11 +618,38 @@ export default function AdminPanel() {
   };
 
   const handleGalleryUrlSave = async (index, url) => {
+    let finalUrl = url;
+
+    // Upload external link to Cloudinary if it doesn't already belong to Cloudinary
+    if (url && url.startsWith('http') && !url.includes('cloudinary.com')) {
+      setLoading(true);
+      try {
+        const res = await fetch(`${API_URL}/upload`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('admin_token')}`
+          },
+          body: JSON.stringify({ imageUrl: url })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          finalUrl = data.imageUrl;
+        } else {
+          console.warn("Cloudinary link upload failed, saving raw URL.");
+        }
+      } catch (err) {
+        console.error("Error uploading pasted gallery image link:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
     if (index === 'showcase') {
-      await handleSaveGallery(galleryImages, url);
+      await handleSaveGallery(galleryImages, finalUrl);
     } else {
       const newImages = [...galleryImages];
-      newImages[index] = url;
+      newImages[index] = finalUrl;
       await handleSaveGallery(newImages, galleryShowcase);
     }
   };
