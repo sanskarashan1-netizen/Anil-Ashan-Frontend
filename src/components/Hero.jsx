@@ -22,7 +22,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen overflow-hidden flex flex-col justify-between pt-36 pb-12 sm:pb-20"
+      className="relative w-full min-h-screen overflow-hidden flex flex-col justify-end pt-36 pb-12 sm:pb-20"
       style={{
         background: '#050505',
         fontFamily: "'Inter', sans-serif",
@@ -89,9 +89,14 @@ const Hero = () => {
         />
       </motion.div>
 
-      {/* 3. Hero Content (Sticky Text & Spacing) */}
-      <div className="sticky top-[180px] z-20 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-6 select-none">
-        
+      {/* 3. Hero Content Wrapper (Contains both Text and Controls, guaranteeing zero overlap!) */}
+      <div 
+        className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-8 select-none"
+        style={{
+          transform: `translateY(${scrollProgress * 110}px)`,
+          opacity: 1 - scrollProgress * 0.9,
+        }}
+      >
         {/* Title & Description Column */}
         <div className="max-w-4xl flex flex-col gap-5">
           <motion.h1
@@ -124,52 +129,52 @@ const Hero = () => {
             Premier property consultancy specializing in elite high-rises and curated luxury penthouses across Mumbai's prestigious avenues.
           </motion.p>
         </div>
-      </div>
 
-      {/* 4. Bottom Controls / Stats Section */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pt-4 mt-8 border-t border-white/10 select-none"
-        style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-        
-        {/* Pill button CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <a
-            href="/properties"
-            className="px-8 py-3.5 bg-[#D4AF37] hover:bg-[#c19b2e] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all shadow-[0_0_24px_rgba(212,175,55,0.25)]"
+        {/* Controls / Stats Row */}
+        <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 pt-6 border-t border-white/10"
+          style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+          
+          {/* Pill button CTA */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
           >
-            Explore Properties
-          </a>
-        </motion.div>
-
-        {/* Floating Glass Stats Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="flex flex-wrap gap-4"
-        >
-          {[
-            { num: '9+', label: 'Matunga Projects' },
-            { num: '4+', label: 'Dadar Exclusives' },
-            { num: '12+', label: 'Sion Residences' },
-          ].map(({ num, label }) => (
-            <div
-              key={label}
-              className="px-4 py-2 border rounded-xl flex items-center gap-3 text-xs"
-              style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                borderColor: 'rgba(255, 255, 255, 0.08)',
-                backdropFilter: 'blur(6px)',
-              }}
+            <a
+              href="/properties"
+              className="px-8 py-3.5 bg-[#D4AF37] hover:bg-[#c19b2e] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all shadow-[0_0_24px_rgba(212,175,55,0.25)]"
             >
-              <span className="font-bold text-[#D4AF37]">{num}</span>
-              <span className="text-[#B8B8B8] font-light">{label}</span>
-            </div>
-          ))}
-        </motion.div>
+              Explore Properties
+            </a>
+          </motion.div>
+
+          {/* Floating Glass Stats Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-wrap gap-4"
+          >
+            {[
+              { num: '9+', label: 'Matunga Projects' },
+              { num: '4+', label: 'Dadar Exclusives' },
+              { num: '12+', label: 'Sion Residences' },
+            ].map(({ num, label }) => (
+              <div
+                key={label}
+                className="px-4 py-2 border rounded-xl flex items-center gap-3 text-xs"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  borderColor: 'rgba(255, 255, 255, 0.08)',
+                  backdropFilter: 'blur(6px)',
+                }}
+              >
+                <span className="font-bold text-[#D4AF37]">{num}</span>
+                <span className="text-[#B8B8B8] font-light">{label}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       {/* Downward scroll queue */}
