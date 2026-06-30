@@ -9,12 +9,23 @@ gsap.registerPlugin(ScrollTrigger);
 const LodhaTour = () => {
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
+  const videoElRef = useRef(null);
 
   useEffect(() => {
+    // Parallax scroll effect
     gsap.to(videoRef.current, {
       yPercent: 18, ease: 'none',
       scrollTrigger: { trigger: sectionRef.current, start: 'top bottom', end: 'bottom top', scrub: true },
     });
+
+    // Programmatically ensure video plays and is muted (bypasses browser autoplay restrictions)
+    if (videoElRef.current) {
+      videoElRef.current.defaultMuted = true;
+      videoElRef.current.muted = true;
+      videoElRef.current.play().catch(error => {
+        console.warn("Video autoplay was prevented by browser:", error);
+      });
+    }
   }, []);
 
   return (
@@ -22,8 +33,17 @@ const LodhaTour = () => {
       style={{ minHeight: 'clamp(380px, 60vw, 640px)' }}>
 
       <div ref={videoRef} className="absolute inset-0 z-0 scale-110" style={{ background: '#000000' }}>
-        <video src="/lodha-video.mp4" autoPlay muted loop playsInline
-          className="w-full h-full object-cover" style={{ opacity: 0.45, filter: 'brightness(18%) contrast(115%)' }} />
+        <video 
+          ref={videoElRef}
+          src="/lodha-video.mp4" 
+          autoPlay 
+          muted 
+          defaultMuted
+          loop 
+          playsInline
+          className="w-full h-full object-cover" 
+          style={{ opacity: 0.45, filter: 'brightness(18%) contrast(115%)' }} 
+        />
         <div className="absolute inset-0"
           style={{ background: 'linear-gradient(to top, #020408 0%, rgba(2,4,8,0.85) 50%, rgba(2,4,8,0.65) 100%)' }} />
         <div className="absolute inset-0"
