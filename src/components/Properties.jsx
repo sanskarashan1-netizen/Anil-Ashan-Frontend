@@ -145,9 +145,9 @@ const Properties = () => {
         <motion.div className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
-            <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">Our Portfolio</span>
-            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#D4AF37,transparent)' }} />
+            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#FFFFFF)' }} />
+            <span className="text-xs uppercase tracking-[0.25em] text-[#FFFFFF] font-semibold">Our Portfolio</span>
+            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#FFFFFF,transparent)' }} />
           </div>
           <h2 className="text-luxury-white mb-4 tracking-tight" 
             style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontFamily: "'Playfair Display', serif", color: '#FFFFFF' }}>
@@ -178,12 +178,12 @@ const Properties = () => {
                   <img src={getImgUrl(p.imageUrl || p.image)} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center" style={{ background: 'rgba(255, 255, 255, 0.02)' }}>
-                    <FaHome style={{ color: '#D4AF37', fontSize: 44, opacity: 0.25 }} />
+                    <FaHome style={{ color: '#FFFFFF', fontSize: 44, opacity: 0.25 }} />
                   </div>
                 )}
                 <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(5,5,5,0.9) 0%, transparent 60%)' }} />
                 <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-md text-[9px] font-bold uppercase tracking-widest backdrop-blur-md"
-                  style={{ background: 'rgba(16,16,16,0.85)', border: '1px solid rgba(255,255,255,0.1)', color: '#D4AF37', transform: 'translateZ(25px)' }}>
+                  style={{ background: 'rgba(16,16,16,0.85)', border: '1px solid rgba(255,255,255,0.1)', color: '#FFFFFF', transform: 'translateZ(25px)' }}>
                   {p.type}
                 </div>
                 <div className="absolute bottom-4 left-5 right-5" style={{ transform: 'translateZ(35px)' }}>
@@ -192,27 +192,27 @@ const Properties = () => {
                     {p.title}
                   </h3>
                   <p className="text-[#B8B8B8] text-xs mt-1 flex items-center gap-1.5 font-light">
-                    <FaMapMarkerAlt className="text-[#D4AF37]" style={{ fontSize: 9 }} />{p.location}
+                    <FaMapMarkerAlt className="text-[#FFFFFF]" style={{ fontSize: 9 }} />{p.location}
                   </p>
                 </div>
               </div>
               <div className="p-6 flex flex-col flex-grow">
                 <div className="flex justify-between items-center mb-5 pb-4" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
                   <span className="text-[#B8B8B8] text-[10px] uppercase tracking-widest font-semibold">Investment Range</span>
-                  <span className="font-bold text-[#D4AF37]" style={{ fontSize: 'clamp(1.3rem, 3vw, 1.7rem)', fontFamily: "'Playfair Display', serif" }}>{p.price}</span>
+                  <span className="font-bold text-[#FFFFFF]" style={{ fontSize: 'clamp(1.3rem, 3vw, 1.7rem)', fontFamily: "'Playfair Display', serif" }}>{p.price}</span>
                 </div>
                 <div className="grid grid-cols-3 gap-3 mb-6">
                   {[{Icon:FaBed,label:p.type},{Icon:FaBath,label:`${p.baths || '1-2'} Baths`},{Icon:FaVectorSquare,label:p.area}].map(({Icon,label}) => (
                     <div key={label} className="flex flex-col items-center justify-center gap-1 py-3 rounded-lg"
                       style={{ background: 'rgba(255, 255, 255, 0.02)', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
-                      <Icon className="text-[#D4AF37]" style={{ fontSize: 13 }} />
+                      <Icon className="text-[#FFFFFF]" style={{ fontSize: 13 }} />
                       <span className="text-[#B8B8B8] text-center tracking-wide mt-1" style={{ fontSize: '9px', textTransform: 'uppercase' }}>{label}</span>
                     </div>
                   ))}
                 </div>
                 <a href={`https://wa.me/919137399167?text=Hi Anil, I need details on ${p.title} in ${p.location}`}
                   target="_blank" rel="noopener noreferrer"
-                  className="mt-auto flex items-center justify-center gap-2 py-3.5 border border-[#D4AF37]/30 hover:border-[#D4AF37] text-xs uppercase font-bold tracking-widest text-[#FFFFFF] hover:text-[#050505] bg-transparent hover:bg-[#D4AF37] rounded-lg transition-all duration-300">
+                  className="mt-auto flex items-center justify-center gap-2 py-3.5 border border-[#FFFFFF]/30 hover:border-[#FFFFFF] text-xs uppercase font-bold tracking-widest text-[#FFFFFF] hover:text-[#050505] bg-transparent hover:bg-[#FFFFFF] rounded-lg transition-all duration-300">
                   View Details <FaArrowRight style={{ fontSize: 9 }} />
                 </a>
               </div>
@@ -226,9 +226,9 @@ const Properties = () => {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="text-center mb-12">
               <div className="flex items-center justify-center gap-3 mb-4">
-                <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
-                <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">Latest Additions</span>
-                <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#D4AF37,transparent)' }} />
+                <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#FFFFFF)' }} />
+                <span className="text-xs uppercase tracking-[0.25em] text-[#FFFFFF] font-semibold">Latest Additions</span>
+                <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#FFFFFF,transparent)' }} />
               </div>
               <h2 className="text-[#FFFFFF] mb-4 tracking-tight" 
                 style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontFamily: "'Playfair Display', serif" }}>
@@ -238,7 +238,7 @@ const Properties = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               {newArrivals.map((l, idx) => (
                 <motion.div key={l._id} custom={idx} variants={cardV} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                  whileHover={{ y: -8, borderColor: 'rgba(212,175,55,0.45)' }}
+                  whileHover={{ y: -8, borderColor: 'rgba(255,255,255,0.2)' }}
                   className="rounded-2xl overflow-hidden flex flex-col transition-all duration-500"
                   style={{ 
                     background: 'rgba(255, 255, 255, 0.03)', 
@@ -247,32 +247,32 @@ const Properties = () => {
                   }}>
                   <div className="relative flex-shrink-0" style={{ height: 220 }}>
                     {l.imageUrl
-                      ? <img src={getImgUrl(l.imageUrl)} alt={l.title} className="w-full h-full object-cover" />
-                      : <div className="w-full h-full flex items-center justify-center" style={{ background: 'rgba(255, 255, 255, 0.02)' }}>
-                          <FaHome style={{ color: '#D4AF37', fontSize: 44, opacity: 0.25 }} />
-                        </div>
+                       ? <img src={getImgUrl(l.imageUrl)} alt={l.title} className="w-full h-full object-cover" />
+                       : <div className="w-full h-full flex items-center justify-center" style={{ background: 'rgba(255, 255, 255, 0.02)' }}>
+                           <FaHome style={{ color: '#FFFFFF', fontSize: 44, opacity: 0.25 }} />
+                         </div>
                     }
                     <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(5,5,5,0.9) 0%, transparent 60%)' }} />
                     {l.type && <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-md text-[9px] font-bold uppercase tracking-widest backdrop-blur-md"
-                      style={{ background: 'rgba(16,16,16,0.85)', border: '1px solid rgba(255,255,255,0.1)', color: '#D4AF37' }}>{l.type}</div>}
+                      style={{ background: 'rgba(16,16,16,0.85)', border: '1px solid rgba(255,255,255,0.1)', color: '#FFFFFF' }}>{l.type}</div>}
                     <div className="absolute bottom-4 left-5 right-5">
                       <h3 className="text-[#FFFFFF] font-bold" 
                         style={{ fontSize: 'clamp(1.2rem, 3vw, 1.45rem)', fontFamily: "'Playfair Display', serif" }}>{l.title}</h3>
                       {l.location && <p className="text-[#B8B8B8] text-xs mt-1 flex items-center gap-1.5 font-light">
-                        <FaMapMarkerAlt className="text-[#D4AF37]" style={{ fontSize: 9 }} />{l.location}
+                        <FaMapMarkerAlt className="text-[#FFFFFF]" style={{ fontSize: 9 }} />{l.location}
                       </p>}
                     </div>
                   </div>
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex justify-between items-center mb-4 pb-4" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
                       <span className="text-[#B8B8B8] text-[10px] uppercase tracking-widest font-semibold">Value</span>
-                      <span className="font-bold text-[#D4AF37]" style={{ fontSize: 'clamp(1.3rem, 3vw, 1.7rem)', fontFamily: "'Playfair Display', serif" }}>{l.price}</span>
+                      <span className="font-bold text-[#FFFFFF]" style={{ fontSize: 'clamp(1.3rem, 3vw, 1.7rem)', fontFamily: "'Playfair Display', serif" }}>{l.price}</span>
                     </div>
-                    {l.area && <p className="text-[#B8B8B8] text-xs mb-3 flex items-center gap-2 font-light"><FaVectorSquare className="text-[#D4AF37]" />Size: {l.area}</p>}
+                    {l.area && <p className="text-[#B8B8B8] text-xs mb-3 flex items-center gap-2 font-light"><FaVectorSquare className="text-[#FFFFFF]" />Size: {l.area}</p>}
                     {l.description && <p className="text-[#B8B8B8] text-sm font-light mb-5 leading-relaxed">{l.description}</p>}
                     <a href={`https://wa.me/919137399167?text=Hi Anil, I am interested in ${l.title}. Please share details.`}
                       target="_blank" rel="noopener noreferrer"
-                      className="mt-auto flex items-center justify-center gap-2 py-3.5 bg-[#D4AF37] hover:bg-[#c19b2e] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all duration-300">
+                      className="mt-auto flex items-center justify-center gap-2 py-3.5 bg-[#FFFFFF] hover:bg-[#E5E7EB] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all duration-300">
                       Enquire Now <FaArrowRight style={{ fontSize: 9 }} />
                     </a>
                   </div>
@@ -290,7 +290,7 @@ const Properties = () => {
             border: '1px solid rgba(255, 255, 255, 0.08)',
             backdropFilter: 'blur(8px)',
           }}>
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(212,175,55,0.06) 0%, transparent 75%)' }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 75%)' }} />
           <div className="relative z-10">
             <h3 className="text-[#FFFFFF] mb-4 tracking-tight" 
               style={{ fontSize: 'clamp(1.4rem, 4vw, 2.6rem)', fontFamily: "'Playfair Display', serif" }}>
@@ -301,7 +301,7 @@ const Properties = () => {
             </p>
             <a href="https://wa.me/919137399167?text=Hi Anil, I am looking for a property."
               target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-[#D4AF37] hover:bg-[#c19b2e] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all duration-300 shadow-[0_0_24px_rgba(212,175,55,0.25)]">
+              className="inline-flex items-center gap-3 px-8 py-4 bg-[#FFFFFF] hover:bg-[#E5E7EB] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all duration-300 shadow-[0_0_24px_rgba(255,255,255,0.1)]">
               <FaWhatsapp style={{ fontSize: 16 }} /> Speak to Consultant
             </a>
           </div>
@@ -312,9 +312,9 @@ const Properties = () => {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
-              <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">Our Values</span>
-              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#D4AF37,transparent)' }} />
+              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#FFFFFF)' }} />
+              <span className="text-xs uppercase tracking-[0.25em] text-[#FFFFFF] font-semibold">Our Values</span>
+              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#FFFFFF,transparent)' }} />
             </div>
             <h2 className="text-[#FFFFFF] mb-4 tracking-tight" 
               style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontFamily: "'Playfair Display', serif" }}>
@@ -324,7 +324,7 @@ const Properties = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyUs.map((item, i) => (
               <motion.div key={i} custom={i} variants={cardV} initial="hidden" whileInView="visible" viewport={{ once: true }}
-                whileHover={{ y: -5, borderColor: 'rgba(212,175,55,0.3)' }}
+                whileHover={{ y: -5, borderColor: 'rgba(255,255,255,0.2)' }}
                 className="p-6 flex flex-col items-center text-center rounded-2xl transition-all duration-300"
                 style={{ 
                   background: 'rgba(255, 255, 255, 0.03)', 
@@ -332,8 +332,8 @@ const Properties = () => {
                   backdropFilter: 'blur(6px)'
                 }}>
                 <div className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
-                  style={{ background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.2)' }}>
-                  <item.icon className="text-[#D4AF37]" style={{ fontSize: 18 }} />
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <item.icon className="text-[#FFFFFF]" style={{ fontSize: 18 }} />
                 </div>
                 <h4 className="text-[#FFFFFF] mb-2 font-bold font-sans" style={{ fontSize: 'clamp(0.95rem,2vw,1.1rem)' }}>{item.title}</h4>
                 <p className="text-[#B8B8B8] font-light leading-relaxed" style={{ fontSize: 'clamp(0.78rem,1.8vw,0.85rem)' }}>{item.desc}</p>
@@ -347,9 +347,9 @@ const Properties = () => {
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
-              <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">Avenues Served</span>
-              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#D4AF37,transparent)' }} />
+              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#FFFFFF)' }} />
+              <span className="text-xs uppercase tracking-[0.25em] text-[#FFFFFF] font-semibold">Avenues Served</span>
+              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#FFFFFF,transparent)' }} />
             </div>
             <h2 className="text-[#FFFFFF] mb-4 tracking-tight" 
               style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontFamily: "'Playfair Display', serif" }}>
@@ -361,7 +361,7 @@ const Properties = () => {
               <motion.span key={loc}
                 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }} transition={{ delay: i * 0.05 }}
-                whileHover={{ scale: 1.05, borderColor: '#D4AF37' }}
+                whileHover={{ scale: 1.05, borderColor: '#FFFFFF' }}
                 className="flex items-center gap-2.5 px-5 py-3 rounded-full font-medium transition-all duration-300 cursor-default"
                 style={{ 
                   background: 'rgba(255, 255, 255, 0.03)', 
@@ -369,7 +369,7 @@ const Properties = () => {
                   color: '#B8B8B8', 
                   fontSize: 'clamp(11px,2vw,13px)' 
                 }}>
-                <FaMapMarkerAlt className="text-[#D4AF37]" style={{ fontSize: 9 }} />{loc}
+                <FaMapMarkerAlt className="text-[#FFFFFF]" style={{ fontSize: 9 }} />{loc}
               </motion.span>
             ))}
           </div>
@@ -379,9 +379,9 @@ const Properties = () => {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
           <div className="text-center mb-14">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
-              <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">Tours</span>
-              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#D4AF37,transparent)' }} />
+              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#FFFFFF)' }} />
+              <span className="text-xs uppercase tracking-[0.25em] text-[#FFFFFF] font-semibold">Tours</span>
+              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#FFFFFF,transparent)' }} />
             </div>
             <h2 className="text-[#FFFFFF] mb-4 tracking-tight" 
               style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontFamily: "'Playfair Display', serif" }}>

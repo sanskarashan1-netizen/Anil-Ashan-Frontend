@@ -148,7 +148,7 @@ const Hero = () => {
             }}
           >
             Luxury Homes.<br />
-            <span className="text-[#D4AF37]" style={{ textShadow: '0 0 32px rgba(212,175,55,0.3)' }}>
+            <span className="text-[#FFFFFF]" style={{ textShadow: '0 0 32px rgba(255,255,255,0.2)' }}>
               Trusted Deals.
             </span>
           </motion.h1>
@@ -181,7 +181,7 @@ const Hero = () => {
               href="/properties"
               onMouseMove={handleMagneticMove}
               onMouseLeave={handleMagneticLeave}
-              className="inline-block px-8 py-3.5 bg-[#D4AF37] hover:bg-[#c19b2e] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all shadow-[0_0_24px_rgba(212,175,55,0.25)]"
+              className="inline-block px-8 py-3.5 bg-[#FFFFFF] hover:bg-[#E5E7EB] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all shadow-[0_0_24px_rgba(255,255,255,0.15)]"
               style={{ display: 'inline-block' }}
             >
               Explore Properties
@@ -209,7 +209,7 @@ const Hero = () => {
                   backdropFilter: 'blur(6px)',
                 }}
               >
-                <span className="font-bold text-[#D4AF37]">{num}</span>
+                <span className="font-bold text-[#FFFFFF]">{num}</span>
                 <span className="text-[#B8B8B8] font-light">{label}</span>
               </div>
             ))}
@@ -228,7 +228,7 @@ const Hero = () => {
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="text-[#D4AF37]"
+          className="text-[#FFFFFF]"
         >
           <FaChevronDown className="text-xs" />
         </motion.div>

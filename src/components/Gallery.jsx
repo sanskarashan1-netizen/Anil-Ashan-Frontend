@@ -116,9 +116,9 @@ const Gallery = () => {
         {/* Header */}
         <div ref={headRef} className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
-            <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">Cinematic Showcase</span>
-            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#D4AF37,transparent)' }} />
+            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#FFFFFF)' }} />
+            <span className="text-xs uppercase tracking-[0.25em] text-[#FFFFFF] font-semibold">Cinematic Showcase</span>
+            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,#FFFFFF,transparent)' }} />
           </div>
           <h2 className="text-[#FFFFFF] mb-4 tracking-tight" 
             style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontFamily: "'Playfair Display', serif" }}>
@@ -149,7 +149,7 @@ const Gallery = () => {
             initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}
             className="absolute bottom-0 inset-x-0 p-6 sm:p-10 text-center">
-            <p className="text-[#D4AF37] text-[10px] uppercase tracking-[0.3em] font-semibold mb-2">
+            <p className="text-[#FFFFFF] text-[10px] uppercase tracking-[0.3em] font-semibold mb-2">
               Experience Premium Living
             </p>
             <h3 className="text-[#FFFFFF] tracking-tight text-xl sm:text-2xl md:text-3xl font-bold" 

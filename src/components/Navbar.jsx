@@ -36,7 +36,7 @@ const Navbar = () => {
         }}
       >
         {/* Logo */}
-        <Link to="/" className="flex flex-col leading-none text-[#FFFFFF] hover:text-[#D4AF37] transition-colors duration-300">
+        <Link to="/" className="flex flex-col leading-none text-[#FFFFFF] hover:text-[#FFFFFF] transition-colors duration-300">
           <span className="text-xl md:text-2xl font-bold tracking-tight"
             style={{ fontFamily: "'Playfair Display', serif" }}>
             ANIL ASHAN
@@ -51,7 +51,7 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map(link => (
             <Link key={link.to} to={link.to}
-              className="font-sans text-xs font-semibold tracking-widest text-[#B8B8B8] hover:text-[#D4AF37] transition-colors duration-300 uppercase"
+              className="font-sans text-xs font-semibold tracking-widest text-[#B8B8B8] hover:text-[#FFFFFF] transition-colors duration-300 uppercase"
               style={{ fontFamily: "'Inter', sans-serif" }}>
               {link.name}
             </Link>
@@ -61,14 +61,14 @@ const Navbar = () => {
         {/* Contact Us button — right */}
         <div className="hidden md:block">
           <a href="#contact"
-            className="px-6 py-3 border border-[#D4AF37]/40 hover:border-[#D4AF37] bg-transparent hover:bg-[#D4AF37] text-[#FFFFFF] hover:text-[#050505] text-[10px] font-bold uppercase tracking-[0.15em] rounded-full transition-all duration-300"
+            className="px-6 py-3 border border-[#FFFFFF]/40 hover:border-[#FFFFFF] bg-transparent hover:bg-[#FFFFFF] text-[#FFFFFF] hover:text-[#050505] text-[10px] font-bold uppercase tracking-[0.15em] rounded-full transition-all duration-300"
             style={{ fontFamily: "'Inter', sans-serif" }}>
             Contact Us
           </a>
         </div>
 
         {/* Mobile toggle */}
-        <button onClick={() => setOpen(true)} className="md:hidden text-[#FFFFFF] hover:text-[#D4AF37] text-2xl p-1 transition-colors">
+        <button onClick={() => setOpen(true)} className="md:hidden text-[#FFFFFF] hover:text-[#FFFFFF] text-2xl p-1 transition-colors">
           <HiMenuAlt3 />
         </button>
       </motion.nav>
@@ -87,7 +87,7 @@ const Navbar = () => {
               backdropFilter: 'blur(12px)'
             }}
           >
-            <button onClick={() => setOpen(false)} className="absolute top-6 right-6 text-[#D4AF37] text-3xl p-1 hover:scale-110 transition-transform">
+            <button onClick={() => setOpen(false)} className="absolute top-6 right-6 text-[#FFFFFF] text-3xl p-1 hover:scale-110 transition-transform">
               <HiX />
             </button>
             <div className="flex flex-col gap-8 text-center">
@@ -101,14 +101,14 @@ const Navbar = () => {
                   {link.to.startsWith('#') ? (
                     <a href={link.to}
                       onClick={() => setOpen(false)}
-                      className="text-2xl font-bold uppercase tracking-widest text-[#FFFFFF] hover:text-[#D4AF37] transition-colors duration-300"
+                      className="text-2xl font-bold uppercase tracking-widest text-[#FFFFFF] hover:text-[#FFFFFF] transition-colors duration-300"
                       style={{ fontFamily: "'Playfair Display', serif" }}>
                       {link.name}
                     </a>
                   ) : (
                     <Link to={link.to}
                       onClick={() => setOpen(false)}
-                      className="text-2xl font-bold uppercase tracking-widest text-[#FFFFFF] hover:text-[#D4AF37] transition-colors duration-300"
+                      className="text-2xl font-bold uppercase tracking-widest text-[#FFFFFF] hover:text-[#FFFFFF] transition-colors duration-300"
                       style={{ fontFamily: "'Playfair Display', serif" }}>
                       {link.name}
                     </Link>

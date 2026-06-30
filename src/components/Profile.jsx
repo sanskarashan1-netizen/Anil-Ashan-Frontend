@@ -163,11 +163,11 @@ const Profile = () => {
               width: 'clamp(64px, 12vw, 92px)', 
               height: 'clamp(64px, 12vw, 92px)', 
               background: '#050505', 
-              border: '1px solid #D4AF37', 
-              boxShadow: '0 0 32px rgba(212,175,55,0.2)' 
+              border: '1px solid #FFFFFF', 
+              boxShadow: '0 0 32px rgba(255,255,255,0.08)' 
             }}
           >
-            <span className="text-[#D4AF37] font-semibold uppercase tracking-widest text-[8px]">Est.</span>
+            <span className="text-[#FFFFFF] font-semibold uppercase tracking-widest text-[8px]">Est.</span>
             <span className="text-[#FFFFFF] font-bold text-xs">2015</span>
           </motion.div>
         </div>
@@ -181,14 +181,14 @@ const Profile = () => {
           className="lg:col-span-6 flex flex-col gap-6"
         >
           <div className="flex items-center gap-3">
-            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
-            <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">Premium Consultant</span>
+            <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#FFFFFF)' }} />
+            <span className="text-xs uppercase tracking-[0.25em] text-[#FFFFFF] font-semibold">Premium Consultant</span>
           </div>
 
           <h2 className="text-[#FFFFFF] leading-[1.1] tracking-tight"
             style={{ fontSize: 'clamp(1.8rem, 4.5vw, 3.2rem)', fontFamily: "'Playfair Display', serif" }}>
             Helping Families Find Their{' '}
-            <span className="text-[#D4AF37]">Dream Home Since 2015</span>
+            <span className="text-[#FFFFFF]">Dream Home Since 2015</span>
           </h2>
 
           <p className="text-[#B8B8B8] font-light leading-relaxed text-sm md:text-base">
@@ -199,7 +199,7 @@ const Profile = () => {
           {/* Luxury stats row */}
           <div className="grid grid-cols-2 gap-6 pt-6 border-t border-white/10" style={{ borderColor: 'rgba(255, 255, 255, 0.08)' }}>
             {stats.map(({ to, suffix, prefix = '', label }) => (
-              <div key={label} className="pl-4" style={{ borderLeft: '2px solid #D4AF37' }}>
+              <div key={label} className="pl-4" style={{ borderLeft: '2px solid #FFFFFF' }}>
                 <div className="text-[#FFFFFF] font-bold"
                   style={{ fontSize: 'clamp(1.4rem, 4vw, 2.1rem)', fontFamily: "'Playfair Display', serif" }}>
                   <AnimatedCounter from={0} to={to} duration={2} prefix={prefix} suffix={suffix} />

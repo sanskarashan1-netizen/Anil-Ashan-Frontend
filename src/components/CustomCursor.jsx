@@ -47,13 +47,13 @@ const CustomCursor = () => {
           x: mousePosition.x - 20,
           y: mousePosition.y - 20,
           scale: isHovering ? 1.5 : 1,
-          backgroundColor: isHovering ? 'rgba(212, 175, 55, 0.15)' : 'transparent',
-          borderColor: isHovering ? 'rgba(212, 175, 55, 0.8)' : 'rgba(212, 175, 55, 0.4)'
+          backgroundColor: isHovering ? 'rgba(37, 99, 235, 0.15)' : 'transparent',
+          borderColor: isHovering ? 'rgba(37, 99, 235, 0.8)' : 'rgba(37, 99, 235, 0.4)'
         }}
         transition={{ type: 'spring', stiffness: 400, damping: 28, mass: 0.5 }}
       />
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-luxury-gold pointer-events-none z-[10000] hidden md:block shadow-[0_0_10px_rgba(212,175,55,1)]"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-luxury-gold pointer-events-none z-[10000] hidden md:block shadow-[0_0_10px_rgba(37,99,235,1)]"
         animate={{
           x: mousePosition.x - 4,
           y: mousePosition.y - 4,
