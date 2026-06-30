@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { name: 'Home',         href: '#home' },
-  { name: 'About Us',     href: '#about' },
-  { name: 'Properties',   href: '#properties' },
-  { name: 'Gallery',      href: '#gallery' },
-  { name: 'Testimonials', href: '#testimonials' },
+  { name: 'Home',         to: '/' },
+  { name: 'About Us',     to: '/about' },
+  { name: 'Properties',   to: '/properties' },
+  { name: 'Gallery',      to: '/gallery' },
+  { name: 'Amenities',    to: '/amenities' },
 ];
 
 const Navbar = () => {
@@ -36,7 +37,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 
         {/* Logo */}
-        <a href="#home" className="flex flex-col leading-none">
+        <Link to="/" className="flex flex-col leading-none">
           <span className="font-heading font-bold text-luxury-white tracking-wide"
             style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)' }}>
             ANIL ASHAN
@@ -45,16 +46,16 @@ const Navbar = () => {
             style={{ fontSize: '9px', textTransform: 'uppercase' }}>
             Real Estate
           </span>
-        </a>
+        </Link>
 
         {/* Desktop links — center */}
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map(link => (
-            <a key={link.href} href={link.href}
+            <Link key={link.to} to={link.to}
               className="font-sans font-medium transition-colors duration-300 hover:text-luxury-gold"
               style={{ fontSize: '13px', letterSpacing: '0.04em', color: '#d4cfc6' }}>
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -88,14 +89,26 @@ const Navbar = () => {
               <span className="font-heading font-bold text-luxury-white text-xl tracking-wide">ANIL ASHAN</span>
             </div>
             <div className="flex flex-col gap-8 text-center">
-              {[...navLinks, { name: 'Contact', href: '#contact' }].map((link, idx) => (
-                <motion.a key={link.href} href={link.href}
-                  initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
+              {[...navLinks, { name: 'Contact', to: '#contact' }].map((link, idx) => (
+                <motion.div
+                  key={link.to}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.06 }}
                   onClick={() => setOpen(false)}
-                  className="text-2xl font-heading font-bold uppercase tracking-widest text-luxury-light hover:text-luxury-gold transition-colors">
-                  {link.name}
-                </motion.a>
+                >
+                  {link.to.startsWith('#') ? (
+                    <a href={link.to}
+                      className="text-2xl font-heading font-bold uppercase tracking-widest text-luxury-light hover:text-luxury-gold transition-colors">
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link to={link.to}
+                      className="text-2xl font-heading font-bold uppercase tracking-widest text-luxury-light hover:text-luxury-gold transition-colors">
+                      {link.name}
+                    </Link>
+                  )}
+                </motion.div>
               ))}
             </div>
           </motion.div>
