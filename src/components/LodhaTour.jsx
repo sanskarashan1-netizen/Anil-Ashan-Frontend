@@ -38,7 +38,6 @@ const LodhaTour = () => {
           src="/lodha-video.mp4" 
           autoPlay 
           muted 
-          defaultMuted
           loop 
           playsInline
           className="w-full h-full object-cover" 
