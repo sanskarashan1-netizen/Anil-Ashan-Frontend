@@ -9,8 +9,8 @@ const Card = ({ src, h = '220px', direction = 'left', delay = 0 }) => {
   const slideX = direction === 'left' ? -80 : 80;
   return (
     <motion.div
-      initial={{ opacity: 0, x: slideX, filter: 'blur(6px)' }}
-      whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+      initial={{ opacity: 0, x: slideX }}
+      whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '0px 0px -220px 0px' }}
       transition={{ duration: 0.9, delay: delay, ease: [0.16, 1, 0.3, 1] }}
       className="relative overflow-hidden rounded-2xl border"
@@ -132,8 +132,8 @@ const Gallery = () => {
         {/* Showcase Banner */}
         <motion.div
           ref={showcaseRef}
-          initial={{ opacity: 0, y: 35, filter: 'blur(6px)' }}
-          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.0, ease: 'easeOut' }}
           className="relative overflow-hidden rounded-2xl mb-6 shadow-2xl border"
