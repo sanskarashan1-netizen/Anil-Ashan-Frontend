@@ -42,12 +42,12 @@ const LodhaTour = () => {
           loop 
           playsInline
           className="w-full h-full object-cover" 
-          style={{ opacity: 0.6, filter: 'brightness(50%) contrast(105%)' }} 
+          style={{ opacity: 0.8, filter: 'brightness(85%) contrast(100%)' }} 
         />
         <div className="absolute inset-0"
-          style={{ background: 'linear-gradient(to top, #020408 0%, rgba(2,4,8,0.85) 50%, rgba(2,4,8,0.65) 100%)' }} />
+          style={{ background: 'linear-gradient(to top, #020408 0%, rgba(2,4,8,0.4) 50%, rgba(2,4,8,0.15) 100%)' }} />
         <div className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.12) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.05) 0%, transparent 70%)' }} />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 text-center py-16 sm:py-24">
