@@ -21,13 +21,13 @@ const LodhaTour = () => {
     <section ref={sectionRef} className="relative overflow-hidden flex items-center justify-center"
       style={{ minHeight: 'clamp(380px, 60vw, 640px)' }}>
 
-      <div ref={videoRef} className="absolute inset-0 z-0 scale-110">
+      <div ref={videoRef} className="absolute inset-0 z-0 scale-110" style={{ background: '#020408' }}>
         <video src="/lodha-video.mp4" autoPlay muted loop playsInline
-          className="w-full h-full object-cover" style={{ opacity: 0.45 }} />
+          className="w-full h-full object-cover" style={{ opacity: 0.22 }} />
         <div className="absolute inset-0"
-          style={{ background: 'linear-gradient(to top, #020408 0%, rgba(2,4,8,0.55) 50%, rgba(2,4,8,0.25) 100%)' }} />
+          style={{ background: 'linear-gradient(to top, #020408 0%, rgba(2,4,8,0.85) 50%, rgba(2,4,8,0.65) 100%)' }} />
         <div className="absolute inset-0"
-          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.07) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,0.12) 0%, transparent 70%)' }} />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 text-center py-16 sm:py-24">
@@ -47,8 +47,8 @@ const LodhaTour = () => {
             <span className="text-gradient-gold">Dream Home</span>
           </h2>
 
-          <p className="text-luxury-light font-light leading-relaxed mb-10 mx-auto"
-            style={{ fontSize: 'clamp(0.85rem,2vw,1.1rem)', maxWidth: '520px', opacity: 0.82 }}>
+          <p className="text-luxury-white font-normal leading-relaxed mb-10 mx-auto"
+            style={{ fontSize: 'clamp(0.85rem,2vw,1.1rem)', maxWidth: '520px', opacity: 0.95 }}>
             Discover premium residences in Matunga East — magnificent architecture, lush landscapes, and an elevated lifestyle crafted for your family.
           </p>
 
