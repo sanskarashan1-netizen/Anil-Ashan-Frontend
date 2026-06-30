@@ -47,12 +47,12 @@ const Footer = () => {
   };
 
   const inputCls = "w-full px-4 py-3.5 text-luxury-white text-sm font-light focus:outline-none transition-colors duration-300 rounded-sm";
-  const inputStyle = { background: 'rgba(10,22,40,0.6)', border: '1px solid rgba(201,168,76,0.2)', };
-  const inputFocusStyle = { borderColor: '#c9a84c' };
+  const inputStyle = { background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', };
+  const inputFocusStyle = { borderColor: '#FFFFFF' };
 
   return (
     <footer id="contact" className="relative text-luxury-white"
-      style={{ background: 'linear-gradient(160deg, #020408 0%, #060d1a 50%, #020408 100%)', borderTop: '1px solid rgba(201,168,76,0.15)' }}>
+      style={{ background: 'linear-gradient(160deg, #020408 0%, #080808 50%, #020408 100%)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-24">
 
         {/* Top grid */}
@@ -61,7 +61,7 @@ const Footer = () => {
           {/* Form side */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#c9a84c)' }} />
+              <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#FFFFFF)' }} />
               <span className="section-label">Get In Touch</span>
             </div>
             <h2 className="font-heading font-bold text-luxury-white mb-3"
@@ -126,9 +126,9 @@ const Footer = () => {
                 <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined}
                   rel="noopener noreferrer"
                   className="flex flex-col items-center gap-1.5 py-4 rounded-xl transition-all duration-300 group"
-                  style={{ background: 'rgba(10,22,40,0.6)', border: '1px solid rgba(201,168,76,0.2)' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#c9a84c'; e.currentTarget.style.borderColor = '#c9a84c'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(10,22,40,0.6)'; e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)'; }}>
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#FFFFFF'; e.currentTarget.style.borderColor = '#FFFFFF'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}>
                   <Icon className="text-luxury-gold group-hover:text-luxury-black transition-colors" style={{ fontSize: 'clamp(16px,4vw,22px)' }} />
                   <span className="text-luxury-white group-hover:text-luxury-black transition-colors font-medium" style={{ fontSize: 'clamp(8px,2vw,11px)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{label}</span>
                 </a>
@@ -146,7 +146,7 @@ const Footer = () => {
             ].map(({ emoji, title, body }) => (
               <div key={title} className="glass-panel p-4 sm:p-5 flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 text-sm"
-                  style={{ background: 'rgba(201,168,76,0.1)', border: '1px solid rgba(201,168,76,0.25)' }}>
+                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)' }}>
                   {emoji}
                 </div>
                 <div>
@@ -160,10 +160,10 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-5"
-          style={{ borderTop: '1px solid rgba(201,168,76,0.12)' }}>
+          style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold font-heading text-luxury-black text-base"
-              style={{ background: 'linear-gradient(135deg, #a07830, #e8c97a)' }}>A</div>
+              style={{ background: 'linear-gradient(135deg, #FFFFFF, #D1D5DB)' }}>A</div>
             <div>
               <p className="text-luxury-muted" style={{ fontSize: '9px', letterSpacing: '0.3em', textTransform: 'uppercase' }}>Anil Ashan</p>
               <p className="text-luxury-white font-heading font-bold" style={{ fontSize: '12px' }}>Premium Real Estate</p>
