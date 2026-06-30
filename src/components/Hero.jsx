@@ -47,13 +47,12 @@ const Hero = () => {
         />
       </div>
 
-      {/* 2. Interactive SVG Draped Fabric (Cloth Reveal Layer) */}
-      <div
-        className="absolute inset-0 z-10 w-full h-full pointer-events-none transition-all duration-200 ease-out"
-        style={{
-          transform: `translateY(${-scrollProgress * 55}%)`,
-          opacity: 0.52,
-        }}
+      {/* 2. Interactive SVG Draped Fabric (Automatic Cinematic Cloth Reveal on Mount) */}
+      <motion.div
+        initial={{ y: "0%", opacity: 0.85 }}
+        animate={{ y: "-135%", opacity: 0 }}
+        transition={{ duration: 2.0, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-0 z-10 w-full h-full pointer-events-none"
       >
         {/* Curved vector path simulating organic draping folds of satin/silk fabric */}
         <svg
@@ -88,7 +87,7 @@ const Hero = () => {
             background: 'linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, transparent 100%)'
           }}
         />
-      </div>
+      </motion.div>
 
       {/* 3. Hero Content (Sticky Text & Spacing) */}
       <div className="sticky top-[180px] z-20 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 flex flex-col gap-6 select-none">
