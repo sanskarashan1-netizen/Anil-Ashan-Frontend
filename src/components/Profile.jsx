@@ -30,34 +30,106 @@ const Profile = () => (
   >
     <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
       
-      {/* Editorial Split Grid */}
+      {/* Editorial Split Grid — Collage on Left, Copy on Right */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-        {/* Column 1: Left content (Lg size: 6/12 cols) */}
+        {/* Column 1: Left Image Collage (Lg size: 6/12 cols) */}
+        <div className="lg:col-span-6 grid grid-cols-2 gap-4 relative">
+          
+          <div className="space-y-4">
+            {/* Top Left Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: -30, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              style={{ height: 'clamp(180px, 30vw, 320px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}
+            >
+              <img src="/image.png" alt="Anil Ashan Portfolio" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
+            </motion.div>
+
+            {/* Bottom Left Photo */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              style={{ height: 'clamp(140px, 24vw, 240px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}
+            >
+              <img src="/about-img-2.jpeg" alt="Property Consultation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            </motion.div>
+          </div>
+
+          <div className="space-y-4 pt-8">
+            {/* Top Right Photo */}
+            <motion.div
+              initial={{ opacity: 0, y: -30, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              style={{ height: 'clamp(140px, 24vw, 240px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}
+            >
+              <img src="/about-img-1.jpeg" alt="Skyscraper Exterior" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            </motion.div>
+
+            {/* Bottom Right Photo */}
+            <motion.div
+              initial={{ opacity: 0, x: 30, filter: 'blur(6px)' }}
+              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              style={{ height: 'clamp(180px, 30vw, 320px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}
+            >
+              <img src="/about-img-3.jpeg" alt="Luxury Penthouse View" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+            </motion.div>
+          </div>
+
+          {/* Floating Luxury Est. Badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5, ease: 'easeOut' }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full flex flex-col items-center justify-center z-10"
+            style={{ 
+              width: 'clamp(64px, 12vw, 92px)', 
+              height: 'clamp(64px, 12vw, 92px)', 
+              background: '#050505', 
+              border: '1px solid #D4AF37', 
+              boxShadow: '0 0 32px rgba(212,175,55,0.2)' 
+            }}
+          >
+            <span className="text-[#D4AF37] font-semibold uppercase tracking-widest text-[8px]">Est.</span>
+            <span className="text-[#FFFFFF] font-bold text-xs">2015</span>
+          </motion.div>
+        </div>
+
+        {/* Column 2: Right Content with Original Text Details (Lg size: 6/12 cols) */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: 40, filter: 'blur(8px)' }}
+          whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-6 flex flex-col gap-6"
         >
           <div className="flex items-center gap-3">
             <div className="h-px w-8" style={{ background: 'linear-gradient(90deg,transparent,#D4AF37)' }} />
-            <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">About Our Consultant</span>
+            <span className="text-xs uppercase tracking-[0.25em] text-[#D4AF37] font-semibold">Premium Consultant</span>
           </div>
 
           <h2 className="text-[#FFFFFF] leading-[1.1] tracking-tight"
             style={{ fontSize: 'clamp(1.8rem, 4.5vw, 3.2rem)', fontFamily: "'Playfair Display', serif" }}>
-            Decade of Excellence in{' '}
-            <span className="text-[#D4AF37]">Premium Estates</span>
+            Helping Families Find Their{' '}
+            <span className="text-[#D4AF37]">Dream Home Since 2015</span>
           </h2>
 
           <p className="text-[#B8B8B8] font-light leading-relaxed text-sm md:text-base">
-            Anil Ashan is a premier luxury real estate consultant specializing in acquiring, selling, and leasing high-end residential & commercial spaces across Mumbai’s most sought-after avenues.
-          </p>
-
-          <p className="text-[#B8B8B8] font-light leading-relaxed text-sm">
-            Known for unmatched legal vetting, transparent negotiations, and a private client network, we secure transactions that align with both aesthetic requirements and long-term asset growth.
+            Anil Ashan is a premier luxury real estate consultant specializing in{' '}
+            <span className="font-semibold text-[#FFFFFF]">buying, selling, and renting</span> residential & commercial properties across Mumbai's elite neighbourhoods.
           </p>
 
           {/* Luxury stats row */}
@@ -73,50 +145,6 @@ const Profile = () => (
                 </div>
               </div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* Column 2: Right Image Collage (Lg size: 6/12 cols) */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-6 grid grid-cols-2 gap-4 relative"
-        >
-          <div className="space-y-4">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl" 
-              style={{ height: 'clamp(180px, 30vw, 320px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-              <img src="/image.png" alt="Anil Ashan" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
-            </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl" 
-              style={{ height: 'clamp(140px, 24vw, 240px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-              <img src="/about-img-2.jpeg" alt="Consultation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
-          </div>
-
-          <div className="space-y-4 pt-8">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl" 
-              style={{ height: 'clamp(140px, 24vw, 240px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-              <img src="/about-img-1.jpeg" alt="Luxury Architecture" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl" 
-              style={{ height: 'clamp(180px, 30vw, 320px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-              <img src="/about-img-3.jpeg" alt="Modern Penthouse" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </div>
-          </div>
-
-          {/* Floating Luxury Est. Badge */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full flex flex-col items-center justify-center z-10"
-            style={{ 
-              width: 'clamp(64px, 12vw, 92px)', 
-              height: 'clamp(64px, 12vw, 92px)', 
-              background: '#050505', 
-              border: '1px solid #D4AF37', 
-              boxShadow: '0 0 32px rgba(212,175,55,0.2)' 
-            }}>
-            <span className="text-[#D4AF37] font-semibold uppercase tracking-widest text-[8px]">Est.</span>
-            <span className="text-[#FFFFFF] font-bold text-xs">2015</span>
           </div>
         </motion.div>
 
