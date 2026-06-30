@@ -11,7 +11,7 @@ const Card = ({ src, h = '220px', direction = 'left', delay = 0 }) => {
     <motion.div
       initial={{ opacity: 0, x: slideX, filter: 'blur(6px)' }}
       whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: true, margin: '0px 0px -220px 0px' }}
       transition={{ duration: 0.9, delay: delay, ease: [0.16, 1, 0.3, 1] }}
       className="relative overflow-hidden rounded-2xl border"
       style={{
