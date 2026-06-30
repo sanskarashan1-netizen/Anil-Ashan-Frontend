@@ -50,8 +50,8 @@ const Hero = () => {
       {/* 2. Interactive SVG Draped Fabric (Automatic Cinematic Cloth Reveal on Mount) */}
       <motion.div
         initial={{ y: "0%", opacity: 0.85 }}
-        animate={{ y: "-135%", opacity: 0 }}
-        transition={{ duration: 3.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        animate={{ y: "-66%", opacity: 0.68 }}
+        transition={{ duration: 4.5, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="absolute inset-0 z-10 w-full h-full pointer-events-none"
       >
         {/* Curved vector path simulating organic draping folds of satin/silk fabric */}
