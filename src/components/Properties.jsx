@@ -101,23 +101,36 @@ const Properties = () => {
   ];
   const videosList = videos.length > 0 ? videos : defaultVideos;
 
+  let rectCache = null;
+
+  const handleMouseEnter = (e) => {
+    rectCache = e.currentTarget.getBoundingClientRect();
+  };
+
   const handleMouseMove = (e) => {
+    if (!rectCache) return;
     const card = e.currentTarget;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const xc = rect.width / 2;
-    const yc = rect.height / 2;
-    const angleX = (yc - y) / 10;
-    const angleY = (x - xc) / 10;
-    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02)`;
-    card.style.transition = 'none';
+    const x = e.clientX - rectCache.left;
+    const y = e.clientY - rectCache.top;
+    const xc = rectCache.width / 2;
+    const yc = rectCache.height / 2;
+    const angleX = (yc - y) / 16; // Softer 3D tilt angle
+    const angleY = (x - xc) / 16;
+    
+    // Align styling update with screen repaint cycle (zero layout thrashing)
+    requestAnimationFrame(() => {
+      card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02)`;
+      card.style.transition = 'transform 0.15s ease-out'; // Soft follow lag
+    });
   };
 
   const handleMouseLeave = (e) => {
+    rectCache = null;
     const card = e.currentTarget;
-    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+    requestAnimationFrame(() => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; // Velvet smooth reset
+    });
   };
 
   return (
@@ -149,6 +162,7 @@ const Properties = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-24">
           {featuredProperties.map((p, idx) => (
             <motion.div key={p._id || p.id} custom={idx} variants={cardV} initial="hidden" whileInView="visible" viewport={{ once: true }}
+              onMouseEnter={handleMouseEnter}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
               className="group rounded-2xl overflow-hidden flex flex-col pointer-events-auto"
