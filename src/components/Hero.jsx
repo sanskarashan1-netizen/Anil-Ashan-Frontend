@@ -9,7 +9,7 @@ const Hero = () => {
   // Monitor scroll for realistic cloth reveal slide
   useEffect(() => {
     const handleScroll = () => {
-      const threshold = window.innerHeight; // Reveal over 100vh
+      const threshold = 350; // Reveal completely over first 350px of scroll
       const current = window.scrollY;
       const progress = Math.min(current / threshold, 1);
       setScrollProgress(progress);
@@ -49,9 +49,10 @@ const Hero = () => {
 
       {/* 2. Interactive SVG Draped Fabric (Cloth Reveal Layer) */}
       <div
-        className="absolute inset-0 z-10 w-full h-full pointer-events-none transition-transform duration-100 ease-out"
+        className="absolute inset-0 z-10 w-full h-full pointer-events-none transition-all duration-200 ease-out"
         style={{
-          transform: `translateY(${-scrollProgress * 110}%)`,
+          transform: `translateY(${-scrollProgress * 135}%)`,
+          opacity: 1 - scrollProgress,
         }}
       >
         {/* Curved vector path simulating organic draping folds of satin/silk fabric */}
