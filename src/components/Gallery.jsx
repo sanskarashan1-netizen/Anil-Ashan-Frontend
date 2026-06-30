@@ -5,14 +5,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Card = ({ src, h = '220px', direction = 'left' }) => {
+const Card = ({ src, h = '220px', direction = 'left', delay = 0 }) => {
   const slideX = direction === 'left' ? -80 : 80;
   return (
     <motion.div
       initial={{ opacity: 0, x: slideX, filter: 'blur(6px)' }}
       whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
       viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.9, delay: delay, ease: [0.16, 1, 0.3, 1] }}
       className="relative overflow-hidden rounded-2xl border"
       style={{
         borderColor: 'rgba(255,255,255,0.08)',
@@ -159,24 +159,24 @@ const Gallery = () => {
           </motion.div>
         </motion.div>
 
-        {/* Row 1: 2 Columns */}
+        {/* Row 1: 2 Columns (Staggered 1-by-1) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <Card src={getImg(0, '/1.png')} h="clamp(200px, 32vw, 420px)" direction="left" />
-          <Card src={getImg(1, '/111.png')} h="clamp(200px, 32vw, 420px)" direction="right" />
+          <Card src={getImg(0, '/1.png')} h="clamp(200px, 32vw, 420px)" direction="left" delay={0.1} />
+          <Card src={getImg(1, '/111.png')} h="clamp(200px, 32vw, 420px)" direction="right" delay={0.3} />
         </div>
 
-        {/* Row 2: 3 Columns */}
+        {/* Row 2: 3 Columns (Staggered 1-by-1) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
-          <Card src={getImg(2, '/13.png')} h="clamp(160px, 20vw, 240px)" direction="left" />
-          <Card src={getImg(3, '/15.png')} h="clamp(160px, 20vw, 240px)" direction="right" />
-          <Card src={getImg(4, '/17.png')} h="clamp(160px, 20vw, 240px)" direction="left" />
+          <Card src={getImg(2, '/13.png')} h="clamp(160px, 20vw, 240px)" direction="left" delay={0.1} />
+          <Card src={getImg(3, '/15.png')} h="clamp(160px, 20vw, 240px)" direction="right" delay={0.3} />
+          <Card src={getImg(4, '/17.png')} h="clamp(160px, 20vw, 240px)" direction="left" delay={0.5} />
         </div>
 
-        {/* Row 3: 3 Columns */}
+        {/* Row 3: 3 Columns (Staggered 1-by-1) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <Card src={getImg(5, '/10.png')} h="clamp(120px, 16vw, 200px)" direction="right" />
-          <Card src={getImg(6, '/11.png')} h="clamp(120px, 16vw, 200px)" direction="left" />
-          <Card src={getImg(7, '/12.png')} h="clamp(120px, 16vw, 200px)" direction="right" />
+          <Card src={getImg(5, '/10.png')} h="clamp(120px, 16vw, 200px)" direction="right" delay={0.1} />
+          <Card src={getImg(6, '/11.png')} h="clamp(120px, 16vw, 200px)" direction="left" delay={0.3} />
+          <Card src={getImg(7, '/12.png')} h="clamp(120px, 16vw, 200px)" direction="right" delay={0.5} />
         </div>
 
       </div>
