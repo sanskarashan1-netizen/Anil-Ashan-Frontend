@@ -51,7 +51,7 @@ const Hero = () => {
       <motion.div
         initial={{ y: "0%", opacity: 0.85 }}
         animate={{ y: "-135%", opacity: 0 }}
-        transition={{ duration: 2.0, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 3.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="absolute inset-0 z-10 w-full h-full pointer-events-none"
       >
         {/* Curved vector path simulating organic draping folds of satin/silk fabric */}
