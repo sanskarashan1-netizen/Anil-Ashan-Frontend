@@ -21,9 +21,9 @@ const LodhaTour = () => {
     <section ref={sectionRef} className="relative overflow-hidden flex items-center justify-center"
       style={{ minHeight: 'clamp(380px, 60vw, 640px)' }}>
 
-      <div ref={videoRef} className="absolute inset-0 z-0 scale-110" style={{ background: '#020408' }}>
+      <div ref={videoRef} className="absolute inset-0 z-0 scale-110" style={{ background: '#000000' }}>
         <video src="/lodha-video.mp4" autoPlay muted loop playsInline
-          className="w-full h-full object-cover" style={{ opacity: 0.22 }} />
+          className="w-full h-full object-cover" style={{ opacity: 0.45, filter: 'brightness(18%) contrast(115%)' }} />
         <div className="absolute inset-0"
           style={{ background: 'linear-gradient(to top, #020408 0%, rgba(2,4,8,0.85) 50%, rgba(2,4,8,0.65) 100%)' }} />
         <div className="absolute inset-0"
