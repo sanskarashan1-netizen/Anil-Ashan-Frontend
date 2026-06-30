@@ -22,71 +22,135 @@ const stats = [
   { to: 50,  suffix: '+',   label: 'Happy Families' },
 ];
 
-const Profile = () => (
-  <section 
-    id="about" 
-    className="py-20 md:py-32 relative select-none"
-    style={{ background: '#050505', fontFamily: "'Inter', sans-serif" }}
-  >
-    <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-      
-      {/* Editorial Split Grid — Collage on Left, Copy on Right */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+const Profile = () => {
+  let rectCache = null;
 
-        {/* Column 1: Left Image Collage (Lg size: 6/12 cols) */}
-        <div className="lg:col-span-6 grid grid-cols-2 gap-4 relative">
-          
-          <div className="space-y-4">
-            {/* Top Left Photo */}
-            <motion.div
-              initial={{ opacity: 0, x: -30, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
-              style={{ height: 'clamp(180px, 30vw, 320px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}
-            >
-              <img src="/image.png" alt="Anil Ashan Portfolio" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" />
-            </motion.div>
+  const handleMouseEnter = (e) => {
+    rectCache = e.currentTarget.getBoundingClientRect();
+  };
 
-            {/* Bottom Left Photo */}
-            <motion.div
-              initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
-              style={{ height: 'clamp(140px, 24vw, 240px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}
-            >
-              <img src="/about-img-2.jpeg" alt="Property Consultation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </motion.div>
-          </div>
+  const handleMouseMove = (e) => {
+    if (!rectCache) return;
+    const card = e.currentTarget;
+    const x = e.clientX - rectCache.left;
+    const y = e.clientY - rectCache.top;
+    const xc = rectCache.width / 2;
+    const yc = rectCache.height / 2;
+    const angleX = (yc - y) / 12; // tilt angle
+    const angleY = (x - xc) / 12;
 
-          <div className="space-y-4 pt-8">
-            {/* Top Right Photo */}
-            <motion.div
-              initial={{ opacity: 0, y: -30, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
-              style={{ height: 'clamp(140px, 24vw, 240px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}
-            >
-              <img src="/about-img-1.jpeg" alt="Skyscraper Exterior" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </motion.div>
+    requestAnimationFrame(() => {
+      card.style.transform = `perspective(800px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.03, 1.03, 1.03)`;
+      card.style.transition = 'transform 0.15s ease-out';
+    });
+  };
 
-            {/* Bottom Right Photo */}
-            <motion.div
-              initial={{ opacity: 0, x: 30, filter: 'blur(6px)' }}
-              whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative rounded-2xl overflow-hidden shadow-2xl"
-              style={{ height: 'clamp(180px, 30vw, 320px)', border: '1px solid rgba(255, 255, 255, 0.08)' }}
-            >
-              <img src="/about-img-3.jpeg" alt="Luxury Penthouse View" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-            </motion.div>
-          </div>
+  const handleMouseLeave = (e) => {
+    rectCache = null;
+    const card = e.currentTarget;
+    requestAnimationFrame(() => {
+      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+  };
+
+  return (
+    <section 
+      id="about" 
+      className="py-20 md:py-32 relative select-none"
+      style={{ background: '#050505', fontFamily: "'Inter', sans-serif" }}
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+        
+        {/* Editorial Split Grid — Collage on Left, Copy on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+          {/* Column 1: Left Image Collage (Lg size: 6/12 cols) */}
+          <div className="lg:col-span-6 grid grid-cols-2 gap-4 relative" style={{ transformStyle: 'preserve-3d' }}>
+            
+            <div className="space-y-4" style={{ transformStyle: 'preserve-3d' }}>
+              {/* Top Left Photo */}
+              <motion.div
+                initial={{ opacity: 0, x: -30, filter: 'blur(6px)' }}
+                whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                onMouseEnter={handleMouseEnter}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="relative rounded-2xl overflow-hidden shadow-2xl pointer-events-auto"
+                style={{ 
+                  height: 'clamp(180px, 30vw, 320px)', 
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  transformStyle: 'preserve-3d',
+                  transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                <img src="/image.png" alt="Anil Ashan Portfolio" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700" style={{ transform: 'translateZ(20px)' }} />
+              </motion.div>
+
+              {/* Bottom Left Photo */}
+              <motion.div
+                initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                onMouseEnter={handleMouseEnter}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="relative rounded-2xl overflow-hidden shadow-2xl pointer-events-auto"
+                style={{ 
+                  height: 'clamp(140px, 24vw, 240px)', 
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  transformStyle: 'preserve-3d',
+                  transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                <img src="/about-img-2.jpeg" alt="Property Consultation" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" style={{ transform: 'translateZ(20px)' }} />
+              </motion.div>
+            </div>
+
+            <div className="space-y-4 pt-8" style={{ transformStyle: 'preserve-3d' }}>
+              {/* Top Right Photo */}
+              <motion.div
+                initial={{ opacity: 0, y: -30, filter: 'blur(6px)' }}
+                whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                onMouseEnter={handleMouseEnter}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="relative rounded-2xl overflow-hidden shadow-2xl pointer-events-auto"
+                style={{ 
+                  height: 'clamp(140px, 24vw, 240px)', 
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  transformStyle: 'preserve-3d',
+                  transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                <img src="/about-img-1.jpeg" alt="Skyscraper Exterior" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" style={{ transform: 'translateZ(20px)' }} />
+              </motion.div>
+
+              {/* Bottom Right Photo */}
+              <motion.div
+                initial={{ opacity: 0, x: 30, filter: 'blur(6px)' }}
+                whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                onMouseEnter={handleMouseEnter}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="relative rounded-2xl overflow-hidden shadow-2xl pointer-events-auto"
+                style={{ 
+                  height: 'clamp(180px, 30vw, 320px)', 
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  transformStyle: 'preserve-3d',
+                  transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                <img src="/about-img-3.jpeg" alt="Luxury Penthouse View" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" style={{ transform: 'translateZ(20px)' }} />
+              </motion.div>
+            </div>
 
           {/* Floating Luxury Est. Badge */}
           <motion.div
@@ -151,6 +215,7 @@ const Profile = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Profile;

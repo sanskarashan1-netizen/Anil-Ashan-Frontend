@@ -33,6 +33,26 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Monitor cursor for magnetic pull on buttons
+  const handleMagneticMove = (e) => {
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - (rect.left + rect.width / 2);
+    const y = e.clientY - (rect.top + rect.height / 2);
+    requestAnimationFrame(() => {
+      btn.style.transform = `translate3d(${x * 0.38}px, ${y * 0.38}px, 0px)`;
+      btn.style.transition = 'transform 0.1s ease-out';
+    });
+  };
+
+  const handleMagneticLeave = (e) => {
+    const btn = e.currentTarget;
+    requestAnimationFrame(() => {
+      btn.style.transform = 'translate3d(0px, 0px, 0px)';
+      btn.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+  };
+
   return (
     <section
       id="home"
@@ -159,7 +179,10 @@ const Hero = () => {
           >
             <a
               href="/properties"
-              className="px-8 py-3.5 bg-[#D4AF37] hover:bg-[#c19b2e] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all shadow-[0_0_24px_rgba(212,175,55,0.25)]"
+              onMouseMove={handleMagneticMove}
+              onMouseLeave={handleMagneticLeave}
+              className="inline-block px-8 py-3.5 bg-[#D4AF37] hover:bg-[#c19b2e] text-[#050505] text-xs uppercase font-bold tracking-widest rounded-lg transition-all shadow-[0_0_24px_rgba(212,175,55,0.25)]"
+              style={{ display: 'inline-block' }}
             >
               Explore Properties
             </a>
