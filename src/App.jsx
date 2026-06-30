@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, useScroll } from 'framer-motion';
+import { useLenis } from './hooks/useLenis';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import TrustBar from './components/TrustBar';
@@ -42,6 +43,7 @@ const UserLayout = ({ children }) => {
 };
 
 function AppContent() {
+  useLenis();
   const location = useLocation();
   const isAdmin = location.pathname === '/admin';
 

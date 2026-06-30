@@ -9,7 +9,7 @@ const Hero = () => {
   // Monitor scroll for realistic cloth reveal slide
   useEffect(() => {
     const handleScroll = () => {
-      const threshold = 220; // Fast halfway reveal over 220px of scroll
+      const threshold = 160; // Extra fast halfway reveal over 160px of scroll
       const current = window.scrollY;
       const progress = Math.min(current / threshold, 1);
       setScrollProgress(progress);
@@ -52,7 +52,7 @@ const Hero = () => {
         className="absolute inset-0 z-10 w-full h-full pointer-events-none transition-all duration-200 ease-out"
         style={{
           transform: `translateY(${-scrollProgress * 55}%)`,
-          opacity: 0.85,
+          opacity: 0.52,
         }}
       >
         {/* Curved vector path simulating organic draping folds of satin/silk fabric */}
@@ -103,10 +103,11 @@ const Hero = () => {
             style={{
               fontSize: 'clamp(54px, 7vw, 110px)',
               fontFamily: "'Playfair Display', serif",
+              textShadow: '0 4px 20px rgba(5,5,5,0.85), 0 2px 6px rgba(5,5,5,0.95)',
             }}
           >
             Luxury Homes.<br />
-            <span className="text-[#D4AF37]" style={{ textShadow: '0 0 32px rgba(212,175,55,0.2)' }}>
+            <span className="text-[#D4AF37]" style={{ textShadow: '0 0 32px rgba(212,175,55,0.3)' }}>
               Trusted Deals.
             </span>
           </motion.h1>
@@ -115,8 +116,11 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="max-w-md text-sm md:text-base font-light text-[#B8B8B8] leading-relaxed"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="max-w-md text-sm md:text-base font-semibold text-[#F5F5F5] leading-relaxed"
+            style={{ 
+              fontFamily: "'Inter', sans-serif",
+              textShadow: '0 2px 10px rgba(5,5,5,0.95), 0 1px 4px rgba(5,5,5,0.95)'
+            }}
           >
             Premier property consultancy specializing in elite high-rises and curated luxury penthouses across Mumbai's prestigious avenues.
           </motion.p>
